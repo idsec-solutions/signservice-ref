@@ -1,0 +1,59 @@
+{
+  "entityId": "https://example.com/sigservice",
+  "keyStoreName": "instance.jks",
+  "keyStorePass": "s3cr3t",
+  "trustStoreName": "trustStore.jks",
+  "trustStorePass": "tsPass",
+  "instanceMetadata": {
+    "displayName": {
+      "langValues": {
+        "sv": "Test unserskriftstjänst",
+        "en": "Test signing service"
+      }
+    },
+    "description": {
+      "langValues": {
+        "sv": "Underskriftstjänst för test",
+        "en": "Test signing service"
+      }
+    },
+    "logoList": [
+      {
+        "height": "150",
+        "width": "150",
+        "logoFileName": "logo.png"
+      }
+    ],
+    "entityCategoryList": [
+      "http://id.elegnamnden.se/st/1.0/sigservice",
+      "http://id.elegnamnden.se/ec/1.0/loa3-pnr",
+      "http://id.elegnamnden.se/ec/1.0/eidas-naturalperson"
+    ],
+    "orgName": {
+      "langValues": {
+        "sv": "Sweden Connect",
+        "en": "Sweden Connect"
+      }
+    },
+    "orgDisplayName": {
+      "langValues": {
+        "sv": "Sweden Connect",
+        "en": "Sweden Connect"
+      }
+    },
+    "orgURL": {
+      "langValues": {
+        "sv": "https://swedenconnect.se",
+        "en": "https://swedenconnect.se"
+      }
+    },
+    "supContactGivenName": "John",
+    "supContactSurName": "Doe",
+    "supContactEmail": "jd@example.com",
+    "supContactTel": "070-1234567",
+    "techContactGivenName": "John",
+    "techContactSurName": "Doe",
+    "techContactEmail": "jd@example.com",
+    "techContactTel": "070-1234567"
+  }
+}

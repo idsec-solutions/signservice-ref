@@ -1,0 +1,377 @@
+/* A� 2011-02-10 */
+/* MS 2011-04-26 */
+/* version 1.0.2 */
+
+/*body {background: #FBF9FC url(/images/18.70ac421612e2a997f85800092124/bg.png) top center no-repeat}*/
+
+#flikar ul {margin:0; padding:0; margin:84px 0 0; width:auto}
+#flikar li {background-color:#e7511e; display:inline; float:left; margin-left:5px; padding:0}
+
+#flikar a:link,
+#flikar a:visited {
+	color:#fff;
+	background-color: #e7511e;
+	font: bold 0.92em/1.5em Verdana, Arial, Helvetica, sans-serif;
+	border:solid 1px #e7511e;
+	border-bottom:none;
+	margin:0;
+	padding:6px 15px;
+	float:left;
+	text-decoration:none;
+	width:auto}
+
+#flikar #active {background-color:#fff}
+#flikar #active a {background-color:#fff; color: #333}
+#flikar a:hover,
+#flikar #active a:hover {text-decoration:underline}
+
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+#flikar a {float: none;}
+/* End IE5-Mac hack */
+
+/* �rsnavigering */
+#years {float:left; width:100%; background:#fff url(elgui/download/18.dfe345a107ebcc9baf800014488/bg.gif) repeat-x bottom; line-height:normal;}
+#years ul {margin:0; padding:10px 10px 0; list-style:none;}
+#years li {float:left; background:url(elgui/download/18.dfe345a107ebcc9baf800014469/left.gif) no-repeat left top; margin:0; padding:0 0 0 9px;}
+#years a {display:block; background:url(elgui/download/18.dfe345a107ebcc9baf800014471/right.gif) no-repeat right top; padding:9px 17px 7px 6px; text-decoration:none; color:#555; border: none;}
+#years a:hover {color: #000;}  
+#years #current {background-image:url(elgui/download/18.dfe345a107ebcc9baf800014470/left_on.gif);}
+#years #current a {background-image:url(elgui/download/18.dfe345a107ebcc9baf800014472/right_on.gif); padding-bottom: 8px; font-weight: bold; color: #000; }
+
+/* Ny �rsnavigering */
+#tabNavigation {margin:0 0 30px; padding:0px; position: relative; height:40px; display: block; width:100%}
+ul#primaryTab {margin:0; padding:0;	position:absolute; bottom:-1px; width:100%; border-bottom:solid 1px #84a5a8}
+ul#primaryTab li {display:inline; list-style:none}
+
+ul#primaryTab a,
+ul#primaryTab a.active {display:block; float:left; text-align:center; font-size:inherit; text-decoration: none; color: #333; margin:0 3px 0; padding:4px 0 4px 0; border-radius: 3px 3px 0px 0px; width:auto}
+ul#primaryTab a.active,
+ul#primaryTab a.active:hover {border:1px solid #84a5a8;	border-bottom: none; background:#fff; color:#000; margin:0 3px -1px 0; padding:9px 13px 12px}
+ul#primaryTab a {background:#f6f6f5; border:1px solid #84a5a8; border-bottom:none; color:#5b878a; margin:0 3px 0 0;	padding:9px 13px 8px}
+ul#primaryTab a:hover {border-color:#84a5a8; background:#84a5a8; color:#fff; margin-top:1px; margin:0 3px 0 0; padding:9px 13px 8px}
+
+
+.box {
+background: white url(http://geblod.nu/wp-content/themes/default/images/bg-box-l.gif) repeat-y;
+margin: 0px 0px 12px;
+overflow: hidden;
+width: 100%;
+}
+.box-l {background: url(http://geblod.nu/wp-content/themes/default/images/bg-box-r.gif) no-repeat 0px 100%}
+.box-r {background: url(http://geblod.nu/wp-content/themes/default/images/bg-box-lt.gif) no-repeat 0px 100%}
+.box-lt {background: url(http://geblod.nu/wp-content/themes/default/images/bg-box-lt.gif) no-repeat 0px 100%}
+.box-rt {background: url(http://geblod.nu/wp-content/themes/default/images/bg-box-rt.gif) no-repeat 0px 100%}
+.box-lb {background: url(http://geblod.nu/wp-content/themes/default/images/bg-box-lb.gif) no-repeat 0px 100%}
+.box-rb {
+background: url(http://geblod.nu/wp-content/themes/default/images/bg-box-rb.gif) no-repeat 100% 100%;
+height: 1%;
+overflow: hidden;
+padding: 15px;
+}
+
+img.flagImg {
+    height: 18px;
+    width: 24px;
+}
+img.flagImg:hover {
+    height: 14px;
+    width: 20px;
+    cursor: pointer;
+    
+    border-right-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-right-width: 2px;
+    border-left-width: 2px;
+    border-bottom-width: 2px;
+    border-top-width: 2px;
+    border-right-color: #b3470d;
+    border-left-color: #b3470d;
+    border-bottom-color: #b3470d;
+    border-top-color: #b3470d;
+}
+
+.c0{
+    background-image:url(elgui/images/18.71004e4c133e23bf6db800077029/bgLightGrey.png);
+    margin-bottom:0;
+    margin-left:0;
+    margin-right:0;
+    margin-top:0;
+}
+.c1{
+    margin:0 auto;
+}
+.c2{
+    position:absolute;
+    top:30px;
+    width:100%;
+    z-index:50;
+}
+.c3{
+    margin:0 auto;
+    width:1020px;
+}
+.c4{
+    background-color:#ffffff;background-image:url(elgui/images/18.71004e4c133e23bf6db800076907/bg-box-l.png);
+    background-repeat:repeat-y;
+    margin:0px 0px 12px;
+    overflow:hidden;
+    width:100%;
+}
+.c5{
+    background-image:url(elgui/images/18.71004e4c133e23bf6db800076908/bg-box-r.png);
+    background-position:center right;
+    background-repeat:repeat-y;
+}
+.c6{
+    background-image:url(elgui/images/18.71004e4c133e23bf6db800076904/bg-box-lt.png);
+    background-repeat:no-repeat;
+}
+.c7{
+    background-image:url(elgui/images/18.71004e4c133e23bf6db800076909/bg-box-rt.png);
+    background-position:top right;
+    background-repeat:no-repeat;
+}
+.c8{
+    background-image:url(elgui/images/18.71004e4c133e23bf6db800076922/bg-box-lb.png);
+    background-position:bottom left;background-repeat:no-repeat;
+}
+.c9{
+    background-image:url(elgui/images/18.71004e4c133e23bf6db800076923/bg-box-rb.png);
+    background-position:bottom right;
+    background-repeat:no-repeat;
+    height:1%;
+    overflow:hidden;
+    padding:10px;
+}
+.c10{
+    padding-bottom:10px;
+    padding-left:30px;
+    padding-right:30px;
+    padding-top:10px;
+}
+.c11{
+    border-bottom-color:#e7511e;
+    border-bottom-style:solid;
+    border-bottom-width:2px;
+    margin-bottom:30px;
+    width:940px;
+}
+.c12{
+    float:left;
+    margin-right:20px;    
+}
+.c13{
+    float:right;
+    margin-bottom:10px;
+    position:relative;
+}
+.c14{
+    border-style:none;
+}
+.ielayoutfix {
+    zoom:1;
+}
+
+.c19{margin-bottom:15px;}
+
+.c20{
+    min-height: 90px;
+}
+
+.c21{
+    padding-top: 30px;
+}
+.c22{
+    min-height: 30px;
+}
+
+.c36{
+    float:left;width:300px;
+}
+.c37{
+    background-color:#ffffff;background-image:url(elgui/images/18.348a0e4412dd74b751f80003246/boxtoning-gra.png);
+    background-repeat:repeat-x;
+    border-color:#cdcdce;
+    border-style:solid;
+    border-width:1px;
+    margin-bottom:20px;
+    padding-bottom:15px;
+    padding-left:15px;
+    padding-right:15px;
+    padding-top:15px;
+}
+/* CSS file generated Wed, 09 Jan 2013 15:44:27 CET */
+/* CSS file size 5819 bytes */
+/* CSS transfer size 1427 bytes */
+
+
+p{margin:11px 0px 0px 0px;}/* Standard SiteVision CSS classes */
+.svhidden {display:none}
+.sv-inline {display:inline}
+.sv-text-align-left {text-align:left}
+.sv-text-align-center {text-align:center}
+.sv-text-align-right {text-align:right}
+.sv-text-align-justify {text-align:justify}/* Login form */
+.login-form-decorations {width:250px; background-color:#eeeeee; border:solid 1px gray}
+.login-form {margin:0; padding:0; text-align:left}
+.login-form form {margin:0}
+.login-form fieldset {border:none; padding:10px; margin:0}
+.login-form legend {display:none}
+.login-form .error {color:red}
+.login-form .field-margin {margin-bottom:5px}
+.login-form .submit {float:left}
+.login-form .login-form-logo {border-style:none; float:right}
+.login-form-end {clear:both}
+.logout-form {margin:0; padding:0; width:250px; text-align:left}
+.logout-form fieldset {border-style:none; padding:10px; margin:0}
+.logout-form legend {display:none}/* Note! Remove form-publish-form classes when directory portlet dependency is fixed (SV-4126)*/
+.form-publish-form fieldset {padding:0.5em 1em;border:1px solid; position:relative}
+.selfservice-fieldset {margin-top:1.2em; border:1px solid transparent; position:relative}
+.wizard-form fieldset {border:1px solid; position:relative}
+.wizard-form {padding:1.3em 1.3em; border:1px solid}
+.tagcloud-tagsize-100 {font-size:100%}
+.tagcloud-tagsize-110 {font-size:110%}
+.tagcloud-tagsize-120 {font-size:120%}
+.tagcloud-tagsize-130 {font-size:130%}
+.tagcloud-tagsize-140 {font-size:140%}
+.tagcloud-tagsize-150 {font-size:150%}
+.tagcloud-tagsize-160 {font-size:160%}
+.tagcloud-tagsize-170 {font-size:170%}
+.tagcloud-tagsize-180 {font-size:180%}
+.tagcloud-tagsize-190 {font-size:190%}
+.tagcloud-tagsize-200 {font-size:200%}
+.tagcloud-tagsize-210 {font-size:210%}
+.tagcloud-tagsize-220 {font-size:220%}
+.tagcloud-tagsize-230 {font-size:230%}
+.tagcloud-tagsize-240 {font-size:240%}
+.tagcloud-tagsize-250 {font-size:250%}
+.tagcloud-tagsize-260 {font-size:260%}
+.tagcloud-tagsize-270 {font-size:270%}
+.tagcloud-tagsize-280 {font-size:280%}
+.tagcloud-tagsize-290 {font-size:290%}
+.tagcloud-tagsize-300 {font-size:300%}
+.tagcloud-tagsize-310 {font-size:310%}
+.tagcloud-tagsize-320 {font-size:320%}
+.tagcloud-tagsize-330 {font-size:330%}
+
+.tagcloud-tagsize-340 {font-size:340%}
+.tagcloud-tagsize-350 {font-size:350%}
+.tagcloud-tagsize-360 {font-size:360%}
+.tagcloud-tagsize-370 {font-size:370%}
+.tagcloud-tagsize-380 {font-size:380%}
+.tagcloud-tagsize-390 {font-size:390%}
+.tagcloud-tagsize-400 {font-size:400%}
+.tagcloud-tagsize-410 {font-size:410%}
+.tagcloud-tagsize-420 {font-size:420%}
+.tagcloud-tagsize-430 {font-size:430%}
+.tagcloud-tagsize-440 {font-size:440%}
+.tagcloud-tagsize-450 {font-size:450%}
+.tagcloud-tagsize-460 {font-size:460%}
+.tagcloud-tagsize-470 {font-size:470%}
+.tagcloud-tagsize-480 {font-size:480%}
+.tagcloud-tagsize-490 {font-size:490%}
+.tagcloud-tagsize-500 {font-size:500%}
+.tagcloud-tagsize-510 {font-size:510%}
+.tagcloud-tagsize-520 {font-size:520%}
+.tagcloud-tagsize-530 {font-size:530%}
+.tagcloud-tagsize-540 {font-size:540%}
+.tagcloud-tagsize-550 {font-size:550%}
+.tagcloud-tagsize-560 {font-size:560%}
+.tagcloud-tagsize-570 {font-size:570%}
+.tagcloud-tagsize-580 {font-size:580%}
+.tagcloud-tagsize-590 {font-size:590%}
+.tagcloud-tagsize-600 {font-size:600%}
+body{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:76%;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin: 0; padding: 0}
+body a,a:link{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:underline;font-size:76%;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin: 0; padding: 0} 
+a:link{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:76%;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin: 0; padding: 0}
+a:visited{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:underline;font-size:76%;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin: 0; padding: 0} 
+a:visited{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:76%;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin: 0; padding: 0}
+a:hover{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:underline;font-size:76%;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin: 0; padding: 0} 
+a:hover{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:76%;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin: 0; padding: 0}
+a:active{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:underline;font-size:76%;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin: 0; padding: 0} 
+a:active{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:76%;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin: 0; padding: 0}
+h1,h1 a{font-family:Arial, "Bitstream Vera Sans", Lucida,  Helvetica,sans-serif;text-decoration:none;font-size:1.65em;font-weight:normal;color:#000000;font-style:normal;line-height:normal;display:inline;margin-bottom: 10px; display: block}
+h2,h2 a{font-family:Arial, "Bitstream Vera Sans", Lucida,  Helvetica,sans-serif;text-decoration:none;font-size:1.4em;font-weight:bold;color:#000000;font-style:normal;line-height:normal;display:inline;margin: 15px 0 10px 0;}
+h3,h3 a{font-family:Arial, "Bitstream Vera Sans", Lucida,  Helvetica,sans-serif;text-decoration:none;font-size:1.35em;font-weight:bold;color:#000000;font-style:normal;line-height:normal;display:inline;}
+h4,h4 a,h5,h5 a{font-family:Arial, "Bitstream Vera Sans", Lucida,  Helvetica,sans-serif;text-decoration:none;font-size:1.2em;font-weight:bold;color:#000000;font-style:normal;line-height:normal;display:inline;}
+.normal,.portlet-font,.portlet-font-label,.portlet-font-dim,.portlet-msg-status,.portlet-msg-info,.portlet-msg-error,.portlet-msg-alert,.portlet-msg-success,.portlet-section-header,.portlet-section-body,.portlet-section-alternate,.portlet-section-selected,.portlet-section-subheader,.portlet-section-footer,.portlet-section-text,.portlet-form-label,.portlet-form-input-field,.portlet-form-button,.portlet-icon-label,.portlet-dlg-icon-label,.portlet-form-field-label,.portlet-form-field,.portlet-menu,.portlet-menu-item,.portlet-menu-item-selected,.portlet-menu-item-hover,.portlet-menu-item-hover-selected,.portlet-menu-cascade-item,.portlet-menu-cascade-item-selected,.portlet-menu-description,.portlet-menu-caption,.sv-portlet-image-caption{
+    font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:1.0em;font-weight:normal;color:#000000;font-style:normal;line-height:140%;
+}
+.normal a,.portlet-font a,.portlet-font-label a,.portlet-font-dim a,.portlet-msg-status a,.portlet-msg-info a,.portlet-msg-error a,.portlet-msg-alert a,.portlet-msg-success a,.portlet-section-header a,.portlet-section-body a,.portlet-section-alternate a,.portlet-section-selected a,.portlet-section-subheader a,.portlet-section-footer a,.portlet-section-text a,.portlet-form-label a,.portlet-form-input-field a,.portlet-form-button a,.portlet-icon-label a,.portlet-dlg-icon-label a,.portlet-form-field-label a,.portlet-form-field a,.portlet-menu a,.portlet-menu-item a,.portlet-menu-item-selected a,.portlet-menu-item-hover a,.portlet-menu-item-hover-selected a,.portlet-menu-cascade-item a,.portlet-menu-cascade-item-selected a,.portlet-menu-description a,.portlet-menu-caption a,.sv-portlet-image-caption a{
+    font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:underline;font-size:1.0em;font-weight:normal;color:#000000;font-style:normal;line-height:140%;
+}
+a.normal:link,a.portlet-font:link,a.portlet-font-label:link,a.portlet-font-dim:link,a.portlet-msg-status:link,a.portlet-msg-info:link,a.portlet-msg-error:link,a.portlet-msg-alert:link,a.portlet-msg-success:link,a.portlet-section-header:link,a.portlet-section-body:link,a.portlet-section-alternate:link,a.portlet-section-selected:link,a.portlet-section-subheader:link,a.portlet-section-footer:link,a.portlet-section-text:link,a.portlet-form-label:link,a.portlet-form-input-field:link,a.portlet-form-button:link,a.portlet-icon-label:link,a.portlet-dlg-icon-label:link,a.portlet-form-field-label:link,a.portlet-form-field:link,a.portlet-menu:link,a.portlet-menu-item:link,a.portlet-menu-item-selected:link,a.portlet-menu-item-hover:link,a.portlet-menu-item-hover-selected:link,a.portlet-menu-cascade-item:link,a.portlet-menu-cascade-item-selected:link,a.portlet-menu-description:link,a.portlet-menu-caption:link,a.sv-portlet-image-caption:link,.normal a:link,.portlet-font a:link,.portlet-font-label a:link,.portlet-font-dim a:link,.portlet-msg-status a:link,.portlet-msg-info a:link,.portlet-msg-error a:link,.portlet-msg-alert a:link,.portlet-msg-success a:link,.portlet-section-header a:link,.portlet-section-body a:link,.portlet-section-alternate a:link,.portlet-section-selected a:link,.portlet-section-subheader a:link,.portlet-section-footer a:link,.portlet-section-text a:link,.portlet-form-label a:link,.portlet-form-input-field a:link,.portlet-form-button a:link,.portlet-icon-label a:link,.portlet-dlg-icon-label a:link,.portlet-form-field-label a:link,.portlet-form-field a:link,.portlet-menu a:link,.portlet-menu-item a:link,.portlet-menu-item-selected a:link,.portlet-menu-item-hover a:link,.portlet-menu-item-hover-selected a:link,.portlet-menu-cascade-item a:link,.portlet-menu-cascade-item-selected a:link,.portlet-menu-description a:link,.portlet-menu-caption a:link,.sv-portlet-image-caption a:link{
+    font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:none;font-size:100%;font-weight:normal;color:#5b878a;font-style:normal;line-height:140%;border-bottom: 1px solid #84A5A8; padding: 1px
+}
+a.normal:visited,a.portlet-font:visited,a.portlet-font-label:visited,a.portlet-font-dim:visited,a.portlet-msg-status:visited,a.portlet-msg-info:visited,a.portlet-msg-error:visited,a.portlet-msg-alert:visited,a.portlet-msg-success:visited,a.portlet-section-header:visited,a.portlet-section-body:visited,a.portlet-section-alternate:visited,a.portlet-section-selected:visited,a.portlet-section-subheader:visited,a.portlet-section-footer:visited,a.portlet-section-text:visited,a.portlet-form-label:visited,a.portlet-form-input-field:visited,a.portlet-form-button:visited,a.portlet-icon-label:visited,a.portlet-dlg-icon-label:visited,a.portlet-form-field-label:visited,a.portlet-form-field:visited,a.portlet-menu:visited,a.portlet-menu-item:visited,a.portlet-menu-item-selected:visited,a.portlet-menu-item-hover:visited,a.portlet-menu-item-hover-selected:visited,a.portlet-menu-cascade-item:visited,a.portlet-menu-cascade-item-selected:visited,a.portlet-menu-description:visited,a.portlet-menu-caption:visited,a.sv-portlet-image-caption:visited,.normal a:visited,.portlet-font a:visited,.portlet-font-label a:visited,.portlet-font-dim a:visited,.portlet-msg-status a:visited,.portlet-msg-info a:visited,.portlet-msg-error a:visited,.portlet-msg-alert a:visited,.portlet-msg-success a:visited,.portlet-section-header a:visited,.portlet-section-body a:visited,.portlet-section-alternate a:visited,.portlet-section-selected a:visited,.portlet-section-subheader a:visited,.portlet-section-footer a:visited,.portlet-section-text a:visited,.portlet-form-label a:visited,.portlet-form-input-field a:visited,.portlet-form-button a:visited,.portlet-icon-label a:visited,.portlet-dlg-icon-label a:visited,.portlet-form-field-label a:visited,.portlet-form-field a:visited,.portlet-menu a:visited,.portlet-menu-item a:visited,.portlet-menu-item-selected a:visited,.portlet-menu-item-hover a:visited,.portlet-menu-item-hover-selected a:visited,.portlet-menu-cascade-item a:visited,.portlet-menu-cascade-item-selected a:visited,.portlet-menu-description a:visited,.portlet-menu-caption a:visited,.sv-portlet-image-caption a:visited{
+    font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:none;font-size:100%;font-weight:normal;color:#84a5a8;font-style:normal;line-height:140%;border-bottom: 1px solid #84A5A8; padding: 1px
+}
+a.normal:hover,a.portlet-font:hover,a.portlet-font-label:hover,a.portlet-font-dim:hover,a.portlet-msg-status:hover,a.portlet-msg-info:hover,a.portlet-msg-error:hover,a.portlet-msg-alert:hover,a.portlet-msg-success:hover,a.portlet-section-header:hover,a.portlet-section-body:hover,a.portlet-section-alternate:hover,a.portlet-section-selected:hover,a.portlet-section-subheader:hover,a.portlet-section-footer:hover,a.portlet-section-text:hover,a.portlet-form-label:hover,a.portlet-form-input-field:hover,a.portlet-form-button:hover,a.portlet-icon-label:hover,a.portlet-dlg-icon-label:hover,a.portlet-form-field-label:hover,a.portlet-form-field:hover,a.portlet-menu:hover,a.portlet-menu-item:hover,a.portlet-menu-item-selected:hover,a.portlet-menu-item-hover:hover,a.portlet-menu-item-hover-selected:hover,a.portlet-menu-cascade-item:hover,a.portlet-menu-cascade-item-selected:hover,a.portlet-menu-description:hover,a.portlet-menu-caption:hover,a.sv-portlet-image-caption:hover,.normal a:hover,.portlet-font a:hover,.portlet-font-label a:hover,.portlet-font-dim a:hover,.portlet-msg-status a:hover,.portlet-msg-info a:hover,.portlet-msg-error a:hover,.portlet-msg-alert a:hover,.portlet-msg-success a:hover,.portlet-section-header a:hover,.portlet-section-body a:hover,.portlet-section-alternate a:hover,.portlet-section-selected a:hover,.portlet-section-subheader a:hover,.portlet-section-footer a:hover,.portlet-section-text a:hover,.portlet-form-label a:hover,.portlet-form-input-field a:hover,.portlet-form-button a:hover,.portlet-icon-label a:hover,.portlet-dlg-icon-label a:hover,.portlet-form-field-label a:hover,.portlet-form-field a:hover,.portlet-menu a:hover,.portlet-menu-item a:hover,.portlet-menu-item-selected a:hover,.portlet-menu-item-hover a:hover,.portlet-menu-item-hover-selected a:hover,.portlet-menu-cascade-item a:hover,.portlet-menu-cascade-item-selected a:hover,.portlet-menu-description a:hover,.portlet-menu-caption a:hover,.sv-portlet-image-caption a:hover{
+    font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:none;font-size:100%;font-weight:normal;color:#84a5a8;font-style:normal;line-height:140%;padding: 1px
+}
+a.normal:active,a.portlet-font:active,a.portlet-font-label:active,a.portlet-font-dim:active,a.portlet-msg-status:active,a.portlet-msg-info:active,a.portlet-msg-error:active,a.portlet-msg-alert:active,a.portlet-msg-success:active,a.portlet-section-header:active,a.portlet-section-body:active,a.portlet-section-alternate:active,a.portlet-section-selected:active,a.portlet-section-subheader:active,a.portlet-section-footer:active,a.portlet-section-text:active,a.portlet-form-label:active,a.portlet-form-input-field:active,a.portlet-form-button:active,a.portlet-icon-label:active,a.portlet-dlg-icon-label:active,a.portlet-form-field-label:active,a.portlet-form-field:active,a.portlet-menu:active,a.portlet-menu-item:active,a.portlet-menu-item-selected:active,a.portlet-menu-item-hover:active,a.portlet-menu-item-hover-selected:active,a.portlet-menu-cascade-item:active,a.portlet-menu-cascade-item-selected:active,a.portlet-menu-description:active,a.portlet-menu-caption:active,a.sv-portlet-image-caption:active,.normal a:active,.portlet-font a:active,.portlet-font-label a:active,.portlet-font-dim a:active,.portlet-msg-status a:active,.portlet-msg-info a:active,.portlet-msg-error a:active,.portlet-msg-alert a:active,.portlet-msg-success a:active,.portlet-section-header a:active,.portlet-section-body a:active,.portlet-section-alternate a:active,.portlet-section-selected a:active,.portlet-section-subheader a:active,.portlet-section-footer a:active,.portlet-section-text a:active,.portlet-form-label a:active,.portlet-form-input-field a:active,.portlet-form-button a:active,.portlet-icon-label a:active,.portlet-dlg-icon-label a:active,.portlet-form-field-label a:active,.portlet-form-field a:active,.portlet-menu a:active,.portlet-menu-item a:active,.portlet-menu-item-selected a:active,.portlet-menu-item-hover a:active,.portlet-menu-item-hover-selected a:active,.portlet-menu-cascade-item a:active,.portlet-menu-cascade-item-selected a:active,.portlet-menu-description a:active,.portlet-menu-caption a:active,.sv-portlet-image-caption a:active{
+    font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:none;font-size:100%;font-weight:normal;color:#5b878a;font-style:normal;line-height:140%;border-bottom: 1px solid #84A5A8; padding: 1px
+}
+.heading,.heading a,a.heading:link,.heading a:link,a.heading:visited,.heading a:visited,a.heading:hover,.heading a:hover,a.heading:active,.heading a:active{
+    font-family:Arial, "Bitstream Vera Sans", Lucida,  Helvetica,sans-serif;text-decoration:none;font-size:1.65em;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin-bottom: 10px; display: block
+}
+.underrubrikxxh2x,.sv-portlet-table-caption,.underrubrikxxh2x a,.sv-portlet-table-caption a,a.underrubrikxxh2x:link,a.sv-portlet-table-caption:link,.underrubrikxxh2x a:link,.sv-portlet-table-caption a:link,a.underrubrikxxh2x:visited,a.sv-portlet-table-caption:visited,.underrubrikxxh2x a:visited,.sv-portlet-table-caption a:visited,a.underrubrikxxh2x:hover,a.sv-portlet-table-caption:hover,.underrubrikxxh2x a:hover,.sv-portlet-table-caption a:hover,a.underrubrikxxh2x:active,a.sv-portlet-table-caption:active,.underrubrikxxh2x a:active,.sv-portlet-table-caption a:active{
+    font-family:Arial, "Bitstream Vera Sans", Lucida,  Helvetica,sans-serif;text-decoration:none;font-size:1.4em;font-weight:bold;color:#000000;font-style:normal;line-height:normal;margin: 15px 0 10px 0;
+}
+.underrubrikxxh3x,.underrubrikxxh3x a,a.underrubrikxxh3x:link,.underrubrikxxh3x a:link,a.underrubrikxxh3x:visited,.underrubrikxxh3x a:visited,a.underrubrikxxh3x:hover,.underrubrikxxh3x a:hover,a.underrubrikxxh3x:active,.underrubrikxxh3x a:active{
+    font-family:Arial, "Bitstream Vera Sans", Lucida,  Helvetica,sans-serif;text-decoration:none;font-size:1.35em;font-weight:bold;color:#000000;font-style:normal;line-height:normal;
+}
+.underrubrikxxh4x,.underrubrikxxh4x a,a.underrubrikxxh4x:link,.underrubrikxxh4x a:link,a.underrubrikxxh4x:visited,.underrubrikxxh4x a:visited,a.underrubrikxxh4x:hover,.underrubrikxxh4x a:hover,a.underrubrikxxh4x:active,.underrubrikxxh4x a:active,.subheading,.subheading a,a.subheading:link,.subheading a:link,a.subheading:visited,.subheading a:visited,a.subheading:hover,.subheading a:hover,a.subheading:active,.subheading a:active{
+    font-family:Arial, "Bitstream Vera Sans", Lucida,  Helvetica,sans-serif;text-decoration:none;font-size:1.2em;font-weight:bold;color:#000000;font-style:normal;line-height:normal;
+}
+.citat{font-family:VerdanaVerdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:1.0em;font-weight:normal;color:#000000;font-style:normal;line-height:140%;display: block; padding-left:40px;}
+.citat a,a.citat:link{font-family:VerdanaVerdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:underline;font-size:1.0em;font-weight:normal;color:#000000;font-style:normal;line-height:140%;display: block; padding-left:40px;}
+.citat a:link{font-family:VerdanaVerdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:1.0em;font-weight:normal;color:#000000;font-style:normal;line-height:140%;display: block; padding-left:40px;}
+a.citat:visited{font-family:VerdanaVerdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:underline;font-size:1.0em;font-weight:normal;color:#000000;font-style:normal;line-height:140%;display: block; padding-left:40px;}
+.citat a:visited{font-family:VerdanaVerdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:1.0em;font-weight:normal;color:#000000;font-style:normal;line-height:140%;display: block; padding-left:40px;}
+a.citat:hover{font-family:VerdanaVerdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:underline;font-size:1.0em;font-weight:normal;color:#000000;font-style:normal;line-height:140%;display: block; padding-left:40px;}
+.citat a:hover{font-family:VerdanaVerdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:1.0em;font-weight:normal;color:#000000;font-style:normal;line-height:140%;display: block; padding-left:40px;}
+a.citat:active{font-family:VerdanaVerdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:underline;font-size:1.0em;font-weight:normal;color:#000000;font-style:normal;line-height:140%;display: block; padding-left:40px;}
+.citat a:active{font-family:VerdanaVerdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:1.0em;font-weight:normal;color:#000000;font-style:normal;line-height:140%;display: block; padding-left:40px;}
+.datumxdiarienummer{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:1.0em;font-weight:normal;color:#777777;font-style:normal;line-height:140%;}
+.datumxdiarienummer a,a.datumxdiarienummer:link{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:underline;font-size:1.0em;font-weight:normal;color:#777777;font-style:normal;line-height:140%;}
+.datumxdiarienummer a:link{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:1.0em;font-weight:normal;color:#777777;font-style:normal;line-height:140%;}
+a.datumxdiarienummer:visited{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:underline;font-size:1.0em;font-weight:normal;color:#777777;font-style:normal;line-height:140%;}
+.datumxdiarienummer a:visited{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:1.0em;font-weight:normal;color:#777777;font-style:normal;line-height:140%;}
+a.datumxdiarienummer:hover{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:underline;font-size:1.0em;font-weight:normal;color:#777777;font-style:normal;line-height:140%;}
+.datumxdiarienummer a:hover{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:1.0em;font-weight:normal;color:#777777;font-style:normal;line-height:140%;}
+a.datumxdiarienummer:active{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:underline;font-size:1.0em;font-weight:normal;color:#777777;font-style:normal;line-height:140%;}
+.datumxdiarienummer a:active{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:1.0em;font-weight:normal;color:#777777;font-style:normal;line-height:140%;}
+.inaktiv,.inaktiv a{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:none;font-size:1.0em;font-weight:normal;color:#9a9a93;font-style:normal;line-height:120%;cursor:help}
+a.inaktiv:link,.inaktiv a:link,a.inaktiv:visited,.inaktiv a:visited,a.inaktiv:hover,.inaktiv a:hover,a.inaktiv:active,.inaktiv a:active{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:none;font-size:100%;font-weight:normal;color:#9a9a93;font-style:normal;line-height:120%;cursor:help}
+.ahuvudmeny,.ahuvudmeny a,a.ahuvudmeny:link,.ahuvudmeny a:link,a.ahuvudmeny:visited,.ahuvudmeny a:visited{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:none;font-size:1.0em;font-weight:normal;color:#ffffff;font-style:normal;line-height:140%;}
+a.ahuvudmeny:hover,.ahuvudmeny a:hover{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:none;font-size:100%;font-weight:normal;color:#ffffff;font-style:normal;line-height:140%;}
+a.ahuvudmeny:active,.ahuvudmeny a:active{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:none;font-size:1.0em;font-weight:normal;color:#ffffff;font-style:normal;line-height:140%;}
+.sidmenyxxxaktiv,.sidmenyxxxaktiv a{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:none;font-size:1.0em;font-weight:bold;color:#ffffff;font-style:normal;line-height:140%;}
+a.sidmenyxxxaktiv:link,.sidmenyxxxaktiv a:link,a.sidmenyxxxaktiv:visited,.sidmenyxxxaktiv a:visited,a.sidmenyxxxaktiv:hover,.sidmenyxxxaktiv a:hover,a.sidmenyxxxaktiv:active,.sidmenyxxxaktiv a:active{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:none;font-size:100%;font-weight:bold;color:#ffffff;font-style:normal;line-height:140%;}
+.logo,.logo a,a.logo:link,.logo a:link,a.logo:visited,.logo a:visited,a.logo:hover,.logo a:hover,a.logo:active,.logo a:active{font-family:"Trebuchet MS", Arial, "Bitstream Vera Sans", Lucida,  Helvetica,sans-serif;text-decoration:none;font-size:2.50em;font-weight:normal;color:#293c5a;font-style:normal;line-height:normal;margin-bottom: 10px; display: block}
+.sidmeny,.sidmeny a{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:none;font-size:0.8em;font-weight:normal;color:#000000;font-style:normal;line-height:150%;}
+a.sidmeny:link,.sidmeny a:link,a.sidmeny:visited,.sidmeny a:visited,a.sidmeny:hover,.sidmeny a:hover,a.sidmeny:active,.sidmeny a:active{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:none;font-size:100%;font-weight:normal;color:#000000;font-style:normal;line-height:150%;}
+.sidfot,.sidfot a,a.sidfot:link,.sidfot a:link,a.sidfot:visited,.sidfot a:visited{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:none;font-size:1.0em;font-weight:normal;color:#777777;font-style:normal;line-height:140%;}
+a.sidfot:hover,.sidfot a:hover{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:none;font-size:100%;font-weight:normal;color:#777777;font-style:normal;line-height:140%;}
+a.sidfot:active,.sidfot a:active{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:none;font-size:1.0em;font-weight:normal;color:#777777;font-style:normal;line-height:140%;}
+.dummybody{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:76%;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin: 0; padding: 0}
+.dummybody a,a.dummybody:link{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:underline;font-size:76%;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin: 0; padding: 0}
+.dummybody a:link{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:76%;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin: 0; padding: 0}
+a.dummybody:visited{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:underline;font-size:76%;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin: 0; padding: 0}
+.dummybody a:visited{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:76%;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin: 0; padding: 0}
+a.dummybody:hover{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:underline;font-size:76%;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin: 0; padding: 0}
+.dummybody a:hover{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:76%;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin: 0; padding: 0}
+a.dummybody:active{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;text-decoration:underline;font-size:76%;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin: 0; padding: 0}
+.dummybody a:active{font-family:Verdana, "Bitstream Vera Sans", Lucida, Arial, Helvetica,sans-serif;font-size:76%;font-weight:normal;color:#000000;font-style:normal;line-height:normal;margin: 0; padding: 0}
+.decorationRamruntbildfoto {border-style: solid; border-color: #e6e6e6; margin-top: 15px; border-width: 1px; padding: 5px;;}
+.decorationBoxmedinnerskugga {padding-left: 15px; padding-right: 15px; position:relative;float: left; padding-top: 15px; background-color: #ffffff; border-style: solid; margin-bottom: 20px; border-color: #cdcdce; padding-bottom: 15px; border-width: 1px; background-image:url(elgui/images/18.348a0e4412dd74b751f80003246/boxtoning-gra.png); background-repeat: repeat-x; }
+.oldLists {	margin-top: 0; margin-left: 0.7em; padding-left: 0.7em;
+}
+
+ul.onumrerad-svart-punkt, ol.onumrerad-svart-punkt{margin: 10px 0 0 0; padding-left: 2.0em}
+.onumrerad-svart-punkt li{margin: 4px 0 4px 2.0em}
+
+

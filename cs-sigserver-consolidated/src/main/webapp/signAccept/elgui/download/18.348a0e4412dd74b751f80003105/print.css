@@ -1,0 +1,23 @@
+/*
+Print css  för sparnamnden.se
+version 0.5 20090203 
+*/
+
+body {background: #fff; margin: 0; padding: 0; font: 100%/160% "Times New Roman", Times, serif;}
+
+/* generic selectors */
+h1, h2, h3, h4, h5, h6 { font-weight: bold; font-family: Arial, Helvetica, sans-serif}
+
+h1 {font-size: 150%;}
+h2 {font-size: 140%;}
+h3 {font-size: 130%;}
+h4 {font-size: 120%;}
+h5 {font-size: 110%;}
+h6 {font-size: 100%;}
+
+a:link {color:#133354;}
+
+li {margin: 0 0 1.1em 0;}
+
+#svid12_6d02084411db6e252fe80006127 {display: none;}
+

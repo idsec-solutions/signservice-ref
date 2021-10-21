@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <context-param>
+        <description>Location of web application files</description>
+        <param-name>DataLocation</param-name>
+        <param-value>/opt/signservice</param-value>
+    </context-param>
+    <context-param>
+        <param-name>VerboseLogging</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>PreventDuplicateUserTasks</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    <listener>
+        <description>ServletContextListener</description>
+        <listener-class>com.aaasec.sigserv.csdaemon.SignServiceListener</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>Signature Request Handler Servlet</servlet-name>
+        <servlet-class>com.aaasec.sigserv.sigserver.RequestHandlerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Signature Servlet</servlet-name>
+        <servlet-class>com.aaasec.sigserv.sigserver.SignatureServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Test Identities Sign Server</servlet-name>
+        <servlet-class>com.aaasec.sigserv.sigserver.TestIdServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TTExportServlet</servlet-name>
+        <servlet-class>com.aaasec.sigserv.webapp.TTExportServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TTExportServlet</servlet-name>
+        <url-pattern>/publish/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Signature Servlet</servlet-name>
+        <url-pattern>/sign</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Signature Request Handler Servlet</servlet-name>
+        <url-pattern>/request</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Test Identities Sign Server</servlet-name>
+        <url-pattern>/testid</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>

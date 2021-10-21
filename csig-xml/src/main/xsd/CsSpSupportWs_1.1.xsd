@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="http://id.svelegtest.se/csig/1.1/csspsupport"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0"
+    targetNamespace="http://id.svelegtest.se/csig/1.1/csspsupport">
+    <xs:element name="completeSigning" type="tns:completeSigning"/>
+    <xs:element name="completeSigningResponse" type="tns:signatureResult"/>
+    <xs:element name="makeSignReq" type="tns:signRequestParams"/>
+    <xs:element name="makeSignReqResponse" type="tns:signRequestXhtml"/>
+    <xs:element name="verifySignature" type="tns:verifySignature"/>
+    <xs:element name="verifySignatureResponse" type="tns:verifyResponse"/>
+    <xs:complexType name="verifySignature">
+        <xs:sequence>
+            <xs:element name="signedDocument" type="xs:base64Binary" nillable="true" minOccurs="0"/>
+            <xs:element name="validationPolicy" type="xs:string" minOccurs="0"/>
+            <xs:element name="parameters">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="key" minOccurs="0" type="xs:string"/>
+                                    <xs:element name="value" minOccurs="0" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="verifyResponse">
+        <xs:sequence>
+            <xs:element name="status" type="tns:status" minOccurs="0"/>
+            <xs:element name="verifyReport" type="xs:base64Binary" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="status">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:int"/>
+            <xs:element name="statusCodeDescription" type="xs:string" minOccurs="0"/>
+            <xs:element name="statusGroup" type="xs:int"/>
+            <xs:element name="statusGroupDescription" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="completeSigning">
+        <xs:sequence>
+            <xs:element name="signResponse" type="xs:base64Binary" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="signatureResult">
+        <xs:sequence>
+            <xs:element name="parameters">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="key" minOccurs="0" type="xs:string"/>
+                                    <xs:element name="value" minOccurs="0" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="signTaskResult" type="tns:signTaskResult" nillable="true"
+                minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="signerId">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="key" minOccurs="0" type="xs:string"/>
+                                    <xs:element name="value" minOccurs="0" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="status" type="tns:status" minOccurs="0"/>
+            <xs:element name="transactionId" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="signTaskResult">
+        <xs:sequence>
+            <xs:element name="parameters">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="key" minOccurs="0" type="xs:string"/>
+                                    <xs:element name="value" minOccurs="0" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="signTaskId" type="xs:string" minOccurs="0"/>
+            <xs:element name="signedDoc" type="xs:base64Binary" minOccurs="0"/>
+            <xs:element name="signedDocRef" type="xs:string" minOccurs="0"/>
+            <xs:element name="status" type="tns:status" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="signRequestParams">
+        <xs:sequence>
+            <xs:element name="certType" type="tns:certType" minOccurs="0"/>
+            <xs:element name="idpEntityId" type="xs:string" minOccurs="0"/>
+            <xs:element name="loa" type="tns:signerAuthLoa" minOccurs="0"/>
+            <xs:element name="parameters">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="key" minOccurs="0" type="xs:string"/>
+                                    <xs:element name="value" minOccurs="0" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="properties">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="key" minOccurs="0" type="tns:property"/>
+                                    <xs:element name="value" minOccurs="0" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="signTaskParams" type="tns:signTaskParams" nillable="true"
+                minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="SignerAttribute"
+                type="tns:SignerAttributeType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="signTaskParams">
+        <xs:sequence>
+            <xs:element name="adesType" type="tns:adesType" minOccurs="0"/>
+            <xs:element name="parameters">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="key" minOccurs="0" type="xs:string"/>
+                                    <xs:element name="value" minOccurs="0" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="policy" type="xs:string" minOccurs="0"/>
+            <xs:element name="sigType" type="tns:sigType" minOccurs="0"/>
+            <xs:element name="signTaskId" type="xs:string" minOccurs="0"/>
+            <xs:element name="tbsDocument" type="xs:base64Binary" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="signRequestXhtml">
+        <xs:sequence>
+            <xs:element name="signRequestXhtml" type="xs:base64Binary" minOccurs="0"/>
+            <xs:element name="status" type="tns:status" minOccurs="0"/>
+            <xs:element name="transactionId" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="certType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PKC"/>
+            <xs:enumeration value="QC"/>
+            <xs:enumeration value="QC_SSCD"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="signerAuthLoa">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="null"/>
+            <xs:enumeration value="loa1"/>
+            <xs:enumeration value="loa2"/>
+            <xs:enumeration value="loa3"/>
+            <xs:enumeration value="loa4"/>
+            <xs:enumeration value="eidas-low"/>
+            <xs:enumeration value="eidas-sub"/>
+            <xs:enumeration value="eidas-sub-nf"/>
+            <xs:enumeration value="eidas-high"/>
+            <xs:enumeration value="eidas-high-nf"/>
+            <xs:enumeration value="uncertified-loa3"/>
+            <xs:enumeration value="custom"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="property">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="returnUrl"/>
+            <xs:enumeration value="requestedAlgorithm"/>
+            <xs:enumeration value="signMessage"/>
+            <xs:enumeration value="spEntityId"/>
+            <xs:enumeration value="requestedAttributes"/>
+            <xs:enumeration value="customLoa"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="adesType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="None"/>
+            <xs:enumeration value="BES"/>
+            <xs:enumeration value="EPES"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="sigType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="XML"/>
+            <xs:enumeration value="PDF"/>
+            <xs:enumeration value="XFA"/>
+            <xs:enumeration value="PDFandXFA"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="SignerAttributeType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="Name" type="xs:string"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:schema>

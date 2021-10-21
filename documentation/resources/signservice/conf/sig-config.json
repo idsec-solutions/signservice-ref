@@ -1,0 +1,22 @@
+{
+  "devmode": false,
+  "crlValidityHours": 2,
+  "sigServiceBaseUrl": "https://example.com/signservice",
+  "metadataLocation": "https://md.example.com/md/swamid-idp.xml",
+  "metadataCertLocation": "conf/md-signer2.crt",
+  "metadataRefreshMinutes": 60,
+  "padesCmsAlgoProtection": true,
+  "serviceName": "Signature Service",
+  "serviceType": "",
+  "legacyLoaIdPs": [],
+  "signatureCaName": "sign-CA1",
+  "caKeyLength": 3072,
+  "caCountry": "SE",
+  "caOrgName": "Dev TEST CA org (NOT A REAL ORGANIZATION)",
+  "caOrgUnitName": "Central Signing Service",
+  "caSerialNumber": "019283091823098",
+  "caCommonName": "#### - Dev TEST Service",
+  "caFileStorageLocation": "publish",
+  "caKsPassword": "S3cr3t",
+  "caKsAlias": "ca"
+}

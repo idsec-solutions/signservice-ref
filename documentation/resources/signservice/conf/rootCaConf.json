@@ -1,0 +1,11 @@
+{
+  "keyLength": 4096,
+  "validityYears": 15,
+  "commonName": "Test Central Signing Root Certification Authority",
+  "organizationName": "Test Org AB (NOT A REAL ORGANIZATION)",
+  "orgUnitName": "Central Sgining Service",
+  "serialNumber": "SE091283908123",
+  "country": "SE",
+  "rootKsPassword": "Secr3t",
+  "rootKsAlias": "root_ca"
+}

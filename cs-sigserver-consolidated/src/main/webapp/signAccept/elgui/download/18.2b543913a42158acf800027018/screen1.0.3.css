@@ -1,0 +1,70 @@
+/* AÅ 2011-02-10 */
+/* MS 2011-04-26 */
+/* version 1.0.2 */
+
+/*body {background: #FBF9FC url(/images/18.70ac421612e2a997f85800092124/bg.png) top center no-repeat}*/
+
+#flikar ul {margin:0; padding:0; margin:84px 0 0; width:auto}
+#flikar li {background-color:#e7511e; display:inline; float:left; margin-left:5px; padding:0}
+
+#flikar a:link,
+#flikar a:visited {
+	color:#fff;
+	background-color:e7511e;
+	font: bold 0.92em/1.5em Verdana, Arial, Helvetica, sans-serif;
+	border:solid 1px #e7511e;
+	border-bottom:none;
+	margin:0;
+	padding:6px 15px;
+	float:left;
+	text-decoration:none;
+	width:auto}
+
+#flikar #active {background-color:#fff}
+#flikar #active a {background-color:#fff; color: #333}
+#flikar a:hover,
+#flikar #active a:hover {text-decoration:underline}
+
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+#flikar a {float: none;}
+/* End IE5-Mac hack */
+
+/* Årsnavigering */
+#years {float:left; width:100%; background:#fff url(/download/18.dfe345a107ebcc9baf800014488/bg.gif) repeat-x bottom; line-height:normal;}
+#years ul {margin:0; padding:10px 10px 0; list-style:none;}
+#years li {float:left; background:url(/download/18.dfe345a107ebcc9baf800014469/left.gif) no-repeat left top; margin:0; padding:0 0 0 9px;}
+#years a {display:block; background:url(/download/18.dfe345a107ebcc9baf800014471/right.gif) no-repeat right top; padding:9px 17px 7px 6px; text-decoration:none; color:#555; border: none;}
+#years a:hover {color: #000;}  
+#years #current {background-image:url(/download/18.dfe345a107ebcc9baf800014470/left_on.gif);}
+#years #current a {background-image:url(/download/18.dfe345a107ebcc9baf800014472/right_on.gif); padding-bottom: 8px; font-weight: bold; color: #000; }
+
+/* Ny årsnavigering */
+#tabNavigation {margin:0 0 30px; padding:0px; position: relative; height:40px; display: block; width:100%}
+ul#primaryTab {margin:0; padding:0;	position:absolute; bottom:-1px; width:100%; border-bottom:solid 1px #84a5a8}
+ul#primaryTab li {display:inline; list-style:none}
+
+ul#primaryTab a,
+ul#primaryTab a.active {display:block; float:left; text-align:center; font-size:inherit; text-decoration: none; color: #333; margin:0 3px 0; padding:4px 0 4px 0; border-radius: 3px 3px 0px 0px; width:auto}
+ul#primaryTab a.active,
+ul#primaryTab a.active:hover {border:1px solid #84a5a8;	border-bottom: none; background:#fff; color:#000; margin:0 3px -1px 0; padding:9px 13px 12px}
+ul#primaryTab a {background:#f6f6f5; border:1px solid #84a5a8; border-bottom:none; color:#5b878a; margin:0 3px 0 0;	padding:9px 13px 8px}
+ul#primaryTab a:hover {border-color:#84a5a8; background:#84a5a8; color:#fff; margin-top:1px; margin:0 3px 0 0; padding:9px 13px 8px}
+
+
+.box {
+background: white url(http://geblod.nu/wp-content/themes/default/images/bg-box-l.gif) repeat-y;
+margin: 0px 0px 12px;
+overflow: hidden;
+width: 100%;
+}
+.box-l {background: url(http://geblod.nu/wp-content/themes/default/images/bg-box-r.gif) no-repeat 0px 100%}
+.box-r {background: url(http://geblod.nu/wp-content/themes/default/images/bg-box-lt.gif) no-repeat 0px 100%}
+.box-lt {background: url(http://geblod.nu/wp-content/themes/default/images/bg-box-lt.gif) no-repeat 0px 100%}
+.box-rt {background: url(http://geblod.nu/wp-content/themes/default/images/bg-box-rt.gif) no-repeat 0px 100%}
+.box-lb {background: url(http://geblod.nu/wp-content/themes/default/images/bg-box-lb.gif) no-repeat 0px 100%}
+.box-rb {
+background: url(http://geblod.nu/wp-content/themes/default/images/bg-box-rb.gif) no-repeat 100% 100%;
+height: 1%;
+overflow: hidden;
+padding: 15px;
+}

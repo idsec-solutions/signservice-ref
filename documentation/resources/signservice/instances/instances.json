@@ -1,0 +1,9 @@
+{
+  "metaDataSignerKeyStore": "MdSigner.jks",
+  "metaDataSignerPass": "s3cr3t",
+  "instanceNames": [
+    "signservice"
+  ],
+  "metadataCacheDurationMinutes": 60,
+  "metadataValidityMinutes": 10080
+}
