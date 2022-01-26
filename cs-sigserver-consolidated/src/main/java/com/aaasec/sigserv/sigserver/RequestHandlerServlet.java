@@ -128,7 +128,7 @@ public class RequestHandlerServlet extends HttpServlet implements Constants {
                 AuthRequest authReq = new AuthRequest(task, signRequestStatus, decoded,signRequestStatus.signServiceEntityId);
                 boolean authnReqSuccess = authReq.prepareAuthRequest();
                 if (!authnReqSuccess && signRequestStatus.spUrl != null) {
-                    LOG.warning("Failed to generate authentication request. No SP URL detected");
+                    LOG.warning("Failed to generate authentication request");
                     //Generate error sign response if spUrl is known
                     ReqResult reqResult = new ReqResult(Enums.ResponseCodeMajor.BadRequest, nonce, signRequestStatus.spUrl, authReq.getErrorMessage());
                     NamedKeyStore instanceKs = serverFront.getInstanceKeystore(decoded);

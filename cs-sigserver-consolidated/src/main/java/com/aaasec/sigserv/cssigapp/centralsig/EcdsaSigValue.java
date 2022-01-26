@@ -31,7 +31,6 @@ import org.bouncycastle.asn1.ASN1Integer;
 import org.bouncycastle.asn1.ASN1Primitive;
 import org.bouncycastle.asn1.ASN1Sequence;
 import org.bouncycastle.asn1.ASN1TaggedObject;
-import org.bouncycastle.asn1.DEROutputStream;
 import org.bouncycastle.asn1.DERSequence;
 
 /**
@@ -153,14 +152,7 @@ public class EcdsaSigValue implements ASN1Encodable {
      * @return DER encoded bytes of the signature value ASN.1 SEQUENCE
      */
     public byte[] getDEREncodedSigValue() throws IOException {
-        ByteArrayOutputStream bout = new ByteArrayOutputStream();
-        DEROutputStream dout = new DEROutputStream(bout);
-        dout.writeObject(toASN1Object());
-        byte[] sigValueBytes = bout.toByteArray();
-        dout.close();
-        bout.close();
-
-        return sigValueBytes;
+        return toASN1Object().getEncoded("DER");
     }
 
     /**

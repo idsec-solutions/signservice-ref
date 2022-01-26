@@ -24,14 +24,14 @@ import java.util.logging.Logger;
 /**
  * URL Decoder
  */
-public class URLDecoder extends java.net.URLDecoder {
+public class URLDecoder {
 
     public static String queryDecode(String codedStr) {
         // Add any custom pre processing here
 
         String decoded = "";
         try {
-            decoded = decode(codedStr, "UTF-8");
+            decoded = java.net.URLDecoder.decode(codedStr, "UTF-8");
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(URLDecoder.class.getName()).log(Level.WARNING, null, ex);
         }

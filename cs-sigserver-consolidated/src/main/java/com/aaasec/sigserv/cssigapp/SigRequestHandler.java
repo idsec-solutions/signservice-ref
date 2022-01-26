@@ -35,6 +35,7 @@ import com.aaasec.sigserv.cssigapp.db.SignTaskTable;
 import com.aaasec.sigserv.cssigapp.instances.InstanceConfig;
 import com.aaasec.sigserv.cssigapp.utils.NamedKeyStore;
 import com.aaasec.sigserv.sigserver.auth.SignMessUtil;
+import org.apache.commons.lang.StringUtils;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlString;
 import org.w3c.dom.Node;
@@ -121,8 +122,9 @@ public class SigRequestHandler {
         } catch (Exception ex) {
         }
         if (eid2Req == null) {
-            return new ReqResult(Enums.ResponseCodeMajor.InsufficientInfo, "", "");
+            return new ReqResult(Enums.ResponseCodeMajor.InsufficientInfo, "", "", null);
         }
+        String reqVersion = eid2Req.getVersion();
 
         // Get response URL and check validity period
         String spUrl = "";
@@ -135,12 +137,22 @@ public class SigRequestHandler {
             Calendar notBefore = conditions.getNotBefore();
             Calendar notOnOrAfter = conditions.getNotOnOrAfter();
             if (!isConditionsTimeValid(notBefore, notOnOrAfter)) {
-                reqResult = new ReqResult(Enums.ResponseCodeMajor.BadRequest, "", spUrl, "Invalid validity period");
+                reqResult = new ReqResult(Enums.ResponseCodeMajor.BadRequest, "", spUrl, "Invalid validity period", reqVersion);
                 setErrorResponse(reqResult, encSigReq, instanceKs);
                 return reqResult;
             }
         } catch (Exception ex) {
-            return new ReqResult(Enums.ResponseCodeMajor.BadRequest, "", "");
+            return new ReqResult(Enums.ResponseCodeMajor.BadRequest, "", "", reqVersion);
+        }
+
+        // Check version
+        if (!reqVersion.equalsIgnoreCase("1.1") &&
+          !reqVersion.equalsIgnoreCase("1.2") &&
+          !reqVersion.equalsIgnoreCase("1.3") &&
+          !reqVersion.equalsIgnoreCase("1.4") ) {
+            reqResult = new ReqResult(Enums.ResponseCodeMajor.BadRequest, "", spUrl, "Unsupported version " + reqVersion,null);
+            setErrorResponse(reqResult, encSigReq, instanceKs);
+            return reqResult;
         }
 
         String id = "";
@@ -293,13 +305,13 @@ public class SigRequestHandler {
             dbSig.setStatus(SigTaskStatus.Received);
             signDb.addOrReplaceRecord(dbSig);
 
-            reqResult = new ReqResult(Enums.ResponseCodeMajor.Success, id, spUrl);
+            reqResult = new ReqResult(Enums.ResponseCodeMajor.Success, id, spUrl, reqVersion);
             reqResult.idpEntityId = idpEntityId;
             reqResult.signServiceEntityId = sigServiceEntityId;
 
             return reqResult;
         } catch (Exception ex) {
-            return new ReqResult(Enums.ResponseCodeMajor.BadRequest, id, spUrl);
+            return new ReqResult(Enums.ResponseCodeMajor.BadRequest, id, spUrl, reqVersion);
         }
 
     }
@@ -329,7 +341,8 @@ public class SigRequestHandler {
         resultMess.setStringValue(reqRes.message);
         result.setResultMajor(reqRes.code);
         SignResponseExtensionType eid2Resp = response.addNewOptionalOutputs().addNewSignResponseExtension();
-        eid2Resp.setVersion("1.1");
+        String version = StringUtils.isBlank(reqRes.reqVersion) ? "1.1" : reqRes.reqVersion;
+        eid2Resp.setVersion(version);
         if (encSigReq != null) {
             eid2Resp.setRequest(encSigReq);
         }

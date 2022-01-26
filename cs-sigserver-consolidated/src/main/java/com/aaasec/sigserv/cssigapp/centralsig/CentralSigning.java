@@ -32,7 +32,6 @@ import org.bouncycastle.asn1.ASN1Set;
 import org.bouncycastle.asn1.ASN1UTCTime;
 import org.bouncycastle.asn1.DERNull;
 import org.bouncycastle.asn1.DEROctetString;
-import org.bouncycastle.asn1.DEROutputStream;
 import org.bouncycastle.asn1.DERSequence;
 import org.bouncycastle.asn1.DERSet;
 import org.bouncycastle.asn1.DERTaggedObject;
@@ -133,12 +132,7 @@ public class CentralSigning {
 
         //Der encode the new signed attributes set
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
-        DEROutputStream dout = new DEROutputStream(bout);
-        dout.writeObject(new DERSet(newSigAttrSet));
-        byte[] newSigAttr = bout.toByteArray();
-        dout.close();
-        bout.close();
-        return newSigAttr;
+        return (new DERSet(newSigAttrSet)).getEncoded("DER");
     }
 
     public static byte[] updateOrAddCMSAlgoProtectionAndSigTIme(byte[] signedAttrBytes, SupportedSigAlgoritm sigAlog) throws IOException, NoSuchAlgorithmException, CertificateException {
@@ -170,12 +164,7 @@ public class CentralSigning {
 
         //Der encode the new signed attributes set
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
-        DEROutputStream dout = new DEROutputStream(bout);
-        dout.writeObject(new DERSet(newSigAttrSet));
-        byte[] newSigAttr = bout.toByteArray();
-        dout.close();
-        bout.close();
-        return newSigAttr;
+        return new DERSet(newSigAttrSet).getEncoded("DER");
     }
 
     public static byte[] removeSignedAttr(byte[] signedAttrBytes, ASN1ObjectIdentifier[] attrOid) throws IOException, NoSuchAlgorithmException, CertificateException {
@@ -193,12 +182,7 @@ public class CentralSigning {
 
         //Der encode the new signed attributes set
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
-        DEROutputStream dout = new DEROutputStream(bout);
-        dout.writeObject(new DERSet(newSigAttrSet));
-        byte[] newSigAttr = bout.toByteArray();
-        dout.close();
-        bout.close();
-        return newSigAttr;
+        return new DERSet(newSigAttrSet).getEncoded("DER");
     }
 
     private static boolean isEssSigCertAttr(Attribute attr) {
@@ -289,13 +273,7 @@ public class CentralSigning {
         digestInfoSeq.add(new DEROctetString(hashValue));
 
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
-        DEROutputStream dout = new DEROutputStream(bout);
-        dout.writeObject((new DERSequence(digestInfoSeq)));
-        byte[] digestInfoBytes = bout.toByteArray();
-        dout.close();
-        bout.close();
-
-        return digestInfoBytes;
+        return new DERSequence(digestInfoSeq).getEncoded("DER");
     }
 
     private static ASN1EncodableVector getCMSAlgoProtAttr(SupportedSigAlgoritm sigAlgo) {

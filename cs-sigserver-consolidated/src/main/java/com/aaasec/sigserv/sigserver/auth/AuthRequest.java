@@ -239,7 +239,10 @@ public class AuthRequest implements Constants {
                   .collect(Collectors.toList());
             } else {
                 // Perform new request LoA assignment (Not using legacy signmessage URI:s
-                requestContextClassRefList = idpSupportedClassRefList.contains(authnContextClassRefList) ? authnContextClassRefList : null;
+                requestContextClassRefList = idpSupportedClassRefList.stream()
+                  .filter(idpLoa -> authnContextClassRefList.contains(idpLoa))
+                  .collect(Collectors.toList());
+                //requestContextClassRefList = idpSupportedClassRefList.contains(authnContextClassRefList) ? authnContextClassRefList : null;
             }
 
         } catch (Exception ex) {

@@ -60,6 +60,7 @@ import java.util.logging.Logger;
 import org.apache.commons.lang.StringUtils;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlString;
+import org.apache.xmlbeans.impl.values.XmlAnyTypeImpl;
 import org.bouncycastle.util.encoders.Base64;
 import org.w3c.dom.Node;
 import se.elegnamnden.id.csig.x11.dssExt.ns.*;
@@ -488,8 +489,12 @@ public class SignatureCreationHandler implements Constants {
             if (aa[0] instanceof XmlString) {
                 attrVal = ((XmlString) aa[0]).getStringValue();
             } else {
-                LOG.warning("Requested signer attribute " + attrId + "has no value to match");
-                return false;
+                if (aa[0] instanceof XmlAnyTypeImpl) {
+                    attrVal = ((XmlAnyTypeImpl) aa[0]).getStringValue();
+                } else {
+                    LOG.warning("Requested signer attribute " + attrId + "has no value to match");
+                    return false;
+                }
             }
             // check if attribute is provided by idp
             boolean attrMatch = false;
@@ -655,13 +660,12 @@ public class SignatureCreationHandler implements Constants {
     private String getProtocolVersion(SignRequest sigReq) {
         try {
             String reqVersion = sigReq.getOptionalInputs().getSignRequestExtension().getVersion();
-            if (reqVersion.equals(EID2_PROTOCOL_VERSION) || StringUtils.isEmpty(reqVersion)){
-                return EID2_PROTOCOL_VERSION;
-            }
+            reqVersion = StringUtils.isBlank(reqVersion) ? "1.1" : reqVersion;
             switch (reqVersion.trim()){
+            case EID2_PROTOCOL_VERSION:
             case "1.2":
             case "1.3":
-            case "1.4":
+            case CURRENT_EID2_PROTOCOL_VERSION:
                 return reqVersion.trim();
             default:
                 return EID2_PROTOCOL_VERSION;

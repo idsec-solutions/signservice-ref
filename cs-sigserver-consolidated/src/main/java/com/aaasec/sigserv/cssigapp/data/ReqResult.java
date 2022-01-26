@@ -20,19 +20,22 @@ public class ReqResult {
     public String idpEntityId;
     public String signServiceEntityId;
     public String errorResponse = "";
+    public String reqVersion;
 
-    public ReqResult(Enums.ResponseCodeMajor type, String id, String spUrl) {
+    public ReqResult(Enums.ResponseCodeMajor type, String id, String spUrl, String reqVersion) {
         this.id = id;
         code = type.getCode();
         message = type.getMessage();
         this.spUrl = spUrl;
+        this.reqVersion = reqVersion;
     }
 
-    public ReqResult(Enums.ResponseCodeMajor type, String id, String spUrl, String message) {
+    public ReqResult(Enums.ResponseCodeMajor type, String id, String spUrl, String message, String reqVersion) {
         this.id = id;
         code = type.getCode();
         this.message = message;
         this.spUrl = spUrl;
+        this.reqVersion = reqVersion;
     }
 
 }
