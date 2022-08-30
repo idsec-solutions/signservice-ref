@@ -70,20 +70,27 @@ public class SAMLResponseHandler {
         try {
             Response samlResponse = ApResponseHandler.unmarshallB64Response(b64SamlResponse);
             id = RequestModelFactory.getResponseId(samlResponse.getInResponseTo());
+            LOG.fine("SAML response in response to: " + id);
             String recipientEntityId = getRecipient(samlResponse, id);
+            LOG.fine("Recipient entityId: "+ recipientEntityId);
             ApCredential spCred = getApCredentials(recipientEntityId);
             idpEntityId = samlResponse.getIssuer().getDOM().getTextContent();
+            LOG.fine("IdP entityId: " + idpEntityId);
             MetaData metadata = ContextParameters.getMetadata();
             Map<String, List<String>> certMap = metadata.getCertMap();
             status = getAuthnStatus(samlResponse);
+            LOG.fine("Found metadata for IdP: " + certMap.containsKey(idpEntityId));
 
             if (certMap.containsKey(idpEntityId)) {
                 List<String> pemCerts = certMap.get(idpEntityId);
+                LOG.fine("Found " + pemCerts.size() + " certificates in IdP metadata");
                 for (String pemCert : pemCerts) {
                     X509Certificate idpCert = CertificateUtils.getCertificateFromPEM(pemCert);
+                    LOG.fine("Found cert in IdP metadata issued to: " + idpCert.getSubjectX500Principal());
                     ApCredential idpCred = new ApCredential(idpCert.getEncoded());
                     respHandler = new ApResponseHandler(samlResponse, spCred, idpCred);
                     if (isSignatureVerified(respHandler)) {
+                        LOG.fine("IdP certificate verifies the signature on the response - signature validation completed");
                         break;
                     }
                 }
@@ -126,7 +133,7 @@ public class SAMLResponseHandler {
                 statusCodeChild = statusCode.getStatusCode().getValue();
             }
             if (statusMessage != null){
-                statusMessageStr = statusMessage.getMessage();
+                statusMessageStr = statusMessage.getMessage() != null ? statusMessage.getMessage() : "";
             }
             LOG.fine("Authentication status received: " + statusCodeStr + " " + statusMessageStr);
             return new AuthnStatus(statusCodeStr, statusCodeChild, statusMessageStr);

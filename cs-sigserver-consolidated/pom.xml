@@ -9,7 +9,7 @@
 
     <groupId>com.aaasec.sigserv</groupId>
     <artifactId>cs-sigserver-consolidated</artifactId>
-    <version>1.3.11</version>
+    <version>1.3.12</version>
     <packaging>war</packaging>
 
     <name>CS Sigserver Consolidated</name>
@@ -109,6 +109,12 @@
             <groupId>com.aaasec.lib</groupId>
             <artifactId>aaautils</artifactId>
             <version>1.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>xml-apis</groupId>
+                    <artifactId>xml-apis</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>

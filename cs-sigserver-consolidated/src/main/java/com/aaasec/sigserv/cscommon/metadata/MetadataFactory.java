@@ -44,7 +44,7 @@ public class MetadataFactory {
         if (currentMetadata != null
           && System.currentTimeMillis() < getNextUpdate(recachetimeMinutes * multiplier)
           && forceUpdate == false) {
-            LOG.fine("Returning cached metadata");
+            LOG.fine("Returning cached metadata holding " + currentMetadata.getCertMap().size() + " entities with certificates");
             return currentMetadata;
         }
 

@@ -30,6 +30,11 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import oasisNamesTcSAMLMetadataUi.UIInfoType;
+import org.apache.commons.lang.StringUtils;
+import org.bouncycastle.util.encoders.Base64;
+import org.w3.x2000.x09.xmldsig.X509DataType;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import x0Metadata.oasisNamesTcSAML2.EndpointType;
 import x0Metadata.oasisNamesTcSAML2.EntityDescriptorType;
 import x0Metadata.oasisNamesTcSAML2.IDPSSODescriptorType;
@@ -174,20 +179,76 @@ public final class UrlMetaDataSource extends MetaData {
     }
 
     private void addCerts(KeyDescriptorType[] keyDescriptorArray, String entityId) {
+        int certCount = 0;
         for (KeyDescriptorType kd : keyDescriptorArray) {
             List<String> certList = certMap.containsKey(entityId) ? certMap.get(entityId) : new ArrayList<String>();
             KeyTypes.Enum use = kd.getUse();
             if (use == null || use.equals(KeyTypes.SIGNING)) {
-                byte[] certBytes = kd.getKeyInfo().getX509DataArray(0).getX509CertificateArray(0);
+                byte[] certBytes = getKeyDescriptorCertBytes(kd);
                 certList.add(Base64Coder.encodeLines(certBytes));
                 certMap.put(entityId, certList);
+                certCount++;
             }
 
             if (use == null || use.equals(KeyTypes.ENCRYPTION)) {
-                byte[] certBytes = kd.getKeyInfo().getX509DataArray(0).getX509CertificateArray(0);
+                byte[] certBytes = getKeyDescriptorCertBytes(kd);
                 encCertMap.put(entityId, Base64Coder.encodeLines(certBytes));
+                certCount++;
             }
         }
+        LOG.fine("Added " + certCount + " certificates for entityId: " + entityId);
+    }
+
+    private byte[] getKeyDescriptorCertBytes(KeyDescriptorType kd) {
+        try {
+            return kd.getKeyInfo().getX509DataArray(0).getX509CertificateArray(0);
+        } catch (Exception ex) {
+            LOG.fine("Unable to retrieve certificate from regular byte read from KeyDescriptor");
+        }
+        try {
+            X509DataType x509Data = kd.getKeyInfo().getX509DataArray(0);
+            final String elementRawText = x509Data.toString();
+            String recoveredRawB64 = parseRawElement(elementRawText);
+
+            Node domNode = x509Data.getDomNode();
+            final NodeList childNodes = domNode.getChildNodes();
+            StringBuilder b = new StringBuilder();
+            for (int i = 0; i<childNodes.getLength(); i++){
+                Node childNode = childNodes.item(i);
+                if (childNode.getNodeType() == Node.TEXT_NODE){
+                    b.append(childNode.getNodeValue());
+                }
+            }
+            String nodeValue = b.toString().trim();
+            if (StringUtils.isNotBlank(nodeValue)){
+                byte[] certBytes = Base64.decode(nodeValue);
+                if (certBytes != null && certBytes.length >0) {
+                    return certBytes;
+                }
+            }
+            if (StringUtils.isNotBlank(recoveredRawB64)){
+                byte[] certBytes = Base64.decode(recoveredRawB64);
+                if (certBytes != null && certBytes.length >0) {
+                    LOG.fine("Successfully recovered certificate bytes from XML parsing");
+                    return certBytes;
+                }
+            }
+        } catch (Exception ex) {
+            LOG.fine("Failed to recover certificate bytes form digital identity: " + ex);
+            return null;
+        }
+        LOG.fine("Failed to recover certificate bytes form digital identity");
+        return null;
+    }
+
+    private String parseRawElement(String elementRawText) {
+        int startIdx = elementRawText.indexOf(">");
+        if (startIdx == -1){
+            return null;
+        }
+        String removeLeadingTag = elementRawText.substring(startIdx + 1);
+        final int endIdx = removeLeadingTag.indexOf("<");
+        return removeLeadingTag.substring(0, endIdx).trim();
     }
 
     public long getCacheInterval() {
