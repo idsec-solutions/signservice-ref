@@ -179,6 +179,7 @@ public final class UrlMetaDataSource extends MetaData {
     }
 
     private void addCerts(KeyDescriptorType[] keyDescriptorArray, String entityId) {
+        LOG.fine("Adding certificates for EntityId: " + entityId);
         int certCount = 0;
         for (KeyDescriptorType kd : keyDescriptorArray) {
             List<String> certList = certMap.containsKey(entityId) ? certMap.get(entityId) : new ArrayList<String>();
@@ -196,7 +197,7 @@ public final class UrlMetaDataSource extends MetaData {
                 certCount++;
             }
         }
-        LOG.fine("Added " + certCount + " certificates for entityId: " + entityId);
+        LOG.fine("Added " + certCount + " certificates");
     }
 
     private byte[] getKeyDescriptorCertBytes(KeyDescriptorType kd) {
@@ -205,9 +206,10 @@ public final class UrlMetaDataSource extends MetaData {
         } catch (Exception ex) {
             LOG.fine("Unable to retrieve certificate from regular byte read from KeyDescriptor");
         }
+        String elementRawText = "";
         try {
             X509DataType x509Data = kd.getKeyInfo().getX509DataArray(0);
-            final String elementRawText = x509Data.toString();
+            elementRawText = x509Data.toString();
             String recoveredRawB64 = parseRawElement(elementRawText);
 
             Node domNode = x509Data.getDomNode();
@@ -237,16 +239,22 @@ public final class UrlMetaDataSource extends MetaData {
             LOG.fine("Failed to recover certificate bytes form digital identity: " + ex);
             return null;
         }
-        LOG.fine("Failed to recover certificate bytes form digital identity");
+        LOG.fine("Failed to recover certificate bytes from key descriptor: \n" + elementRawText );
         return null;
     }
 
     private String parseRawElement(String elementRawText) {
-        int startIdx = elementRawText.indexOf(">");
-        if (startIdx == -1){
+        int certElementStartIdx = elementRawText.indexOf("X509Certificate");
+        if (certElementStartIdx == -1) {
             return null;
         }
-        String removeLeadingTag = elementRawText.substring(startIdx + 1);
+        String certElementData = elementRawText.substring(certElementStartIdx);
+
+        int dataStartIdx = certElementData.indexOf(">");
+        if (dataStartIdx == -1){
+            return null;
+        }
+        String removeLeadingTag = certElementData.substring(dataStartIdx + 1);
         final int endIdx = removeLeadingTag.indexOf("<");
         return removeLeadingTag.substring(0, endIdx).trim();
     }
