@@ -9,7 +9,7 @@
 
     <groupId>com.aaasec.sigserv</groupId>
     <artifactId>cs-sigserver-consolidated</artifactId>
-    <version>1.3.12</version>
+    <version>1.3.13</version>
     <packaging>war</packaging>
 
     <name>CS Sigserver Consolidated</name>
@@ -60,12 +60,12 @@
         <dependency>
             <groupId>org.apache.xmlbeans</groupId>
             <artifactId>xmlbeans</artifactId>
-            <version>5.0.3</version>
+            <version>3.0.2</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>csigxml</artifactId>
-            <version>1.2.1</version>
+            <artifactId>csig-xml</artifactId>
+            <version>1.2.2</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
@@ -103,7 +103,7 @@
         <dependency>
             <groupId>com.aaasec.lib</groupId>
             <artifactId>aaacrypto</artifactId>
-            <version>1.0.6</version>
+            <version>1.0.5</version>
         </dependency>
         <dependency>
             <groupId>com.aaasec.lib</groupId>
