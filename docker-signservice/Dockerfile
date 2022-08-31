@@ -11,7 +11,7 @@ RUN rm -rf /opt/tomcat/webapps/host-manager
 # Redirecting log directories
 RUN rm -rf /opt/tomcat/logs && ln -s /var/log/signservice/ /opt/tomcat/logs
 
-# Making scripts executable
+# Making scripts executablem
 RUN chmod a+x /opt/tomcat/bin/*.sh
 
 # HTTP and HTTPS
