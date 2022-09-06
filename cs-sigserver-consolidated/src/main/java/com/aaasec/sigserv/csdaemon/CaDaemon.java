@@ -59,7 +59,13 @@ public class CaDaemon {
                 if (System.currentTimeMillis() > nextUpdate) {
                     nextUpdate = System.currentTimeMillis() + cycleTime;
                     LOG.info("Start Sign service Instance Metadata Publication ...");
-                    instMdFact.storeInstanceMetadata();
+                    try {
+                        instMdFact.storeInstanceMetadata();
+                    }
+                    catch (Exception e) {
+                        LOG.warning("Error encountered while attempting to sign instance metadata: " + e.getMessage());
+                        LOG.log(Level.FINE, "Detailed error trace - signature error", e);
+                    }
                     LOG.info("Start Sign service daemon process ...");
                     daemonTask.doDaemonTask();
                 }

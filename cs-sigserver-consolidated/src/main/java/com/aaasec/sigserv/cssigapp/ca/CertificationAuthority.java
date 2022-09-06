@@ -452,7 +452,7 @@ public class CertificationAuthority implements CaKeyStoreConstants {
         return certificatePolicies;
     }
 
-    public byte[] signResponse(byte[] xmlData, Node sigParent) throws KeyStoreException, NoSuchAlgorithmException, UnrecoverableKeyException {
+    public byte[] signResponse(byte[] xmlData, Node sigParent) throws Exception {
         return XMLSign.getSignedXML(xmlData, (PrivateKey) key_store.getKey(ksAlias, ksPassword), caCert, sigParent, true, false).sigDocBytes;
     }
 

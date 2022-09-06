@@ -77,7 +77,7 @@ public class InstanceMetadataFactory {
         this.dataDir = FileOps.getfileNameString(ContextParameters.getDataLocation(), "instances");
     }
 
-    public void storeInstanceMetadata() {
+    public void storeInstanceMetadata() throws Exception {
         instConf.reloadConf();
         metadataDoc = EntitiesDescriptorDocument.Factory.newInstance();
         entitiesDescriptor = metadataDoc.addNewEntitiesDescriptor();

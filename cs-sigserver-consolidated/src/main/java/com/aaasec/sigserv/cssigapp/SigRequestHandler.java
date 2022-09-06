@@ -36,6 +36,7 @@ import com.aaasec.sigserv.cssigapp.instances.InstanceConfig;
 import com.aaasec.sigserv.cssigapp.utils.NamedKeyStore;
 import com.aaasec.sigserv.sigserver.auth.SignMessUtil;
 import org.apache.commons.lang.StringUtils;
+import org.apache.xml.security.utils.XMLUtils;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlString;
 import org.w3c.dom.Node;
@@ -55,16 +56,20 @@ import x0CoreSchema.oasisNamesTcDss1.SignResponseDocument.SignResponse;
 
 import java.io.ByteArrayInputStream;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.security.PublicKey;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Sig Request Handler
  */
 public class SigRequestHandler {
 
+    private static final Logger LOG = Logger.getLogger(SigRequestHandler.class.getName());
     private static final long MAX_TIME = 1000 * 60 * 10;
     private final String storageLocation;
     private final SignTaskTable signDb;
@@ -352,7 +357,13 @@ public class SigRequestHandler {
         // attempt to sign response;
         if (instanceKs != null){
             Node sigParent = SignatureCreationHandler.getResponseSignatureParent(responseDoc);
-            SignedXmlDoc signedXML = XMLSign.getSignedXML(responseXml, instanceKs.getPrivate(), instanceKs.getKsCert(), sigParent, true, false);
+            SignedXmlDoc signedXML = null;
+            try {
+                signedXML = XMLSign.getSignedXML(responseXml, instanceKs.getPrivate(), instanceKs.getKsCert(), sigParent, true, false);
+            }
+            catch (Exception e) {
+                LOG.log(Level.SEVERE, "Unable to sign response. Sending unsigned response", e);
+            }
             responseXml = signedXML.sigDocBytes;
         }
 
