@@ -1,8 +1,6 @@
 package com.aaasec.sigserv.csdaemon;
 
-import com.aaasec.lib.crypto.xml.XMLSign;
 import com.aaasec.sigserv.cscommon.config.ConfigFactory;
-import com.aaasec.sigserv.cscommon.metadata.MetaData;
 import com.aaasec.sigserv.cscommon.metadata.MetadataFactory;
 import com.aaasec.sigserv.cssigapp.data.SigConfig;
 import com.aaasec.sigserv.cssigapp.instances.InstanceConfig;
@@ -14,13 +12,11 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import com.aaasec.sigserv.cssigapp.sap.SAPHandler;
+import com.aaasec.sigserv.xmlsign.SigComXMLSign;
 import org.opensaml.Configuration;
 import org.opensaml.DefaultBootstrap;
-import org.opensaml.xml.ConfigurationException;
-import org.opensaml.xml.XMLConfigurator;
 import org.opensaml.xml.security.BasicSecurityConfiguration;
 import org.opensaml.xml.security.SecurityConfiguration;
-import se.idsec.audit.signservice.AuditLogger;
 
 /**
  * Web application lifecycle listener.
@@ -98,7 +94,7 @@ public class SignServiceListener implements ServletContextListener {
             return;
         }
         BasicSecurityConfiguration secConfig = (BasicSecurityConfiguration) config;
-        secConfig.setSignatureReferenceDigestMethod(XMLSign.SHA256);
+        secConfig.setSignatureReferenceDigestMethod(SigComXMLSign.SHA256);
     }
 
     @Override

@@ -17,7 +17,7 @@
  */
 package com.aaasec.sigserv.cssigapp.ca;
 
-import com.aaasec.lib.crypto.xml.XMLSign;
+import com.aaasec.sigserv.xmlsign.SigComXMLSign;
 import com.aaasec.sigserv.cscommon.Base64Coder;
 import com.aaasec.sigserv.cscommon.FileOps;
 import com.aaasec.sigserv.cscommon.FnvHash;
@@ -70,13 +70,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.math.BigInteger;
 import java.security.KeyStore;
-import java.security.KeyStoreException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.Principal;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-import java.security.UnrecoverableKeyException;
 import java.security.cert.X509CRLEntry;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -453,7 +451,8 @@ public class CertificationAuthority implements CaKeyStoreConstants {
     }
 
     public byte[] signResponse(byte[] xmlData, Node sigParent) throws Exception {
-        return XMLSign.getSignedXML(xmlData, (PrivateKey) key_store.getKey(ksAlias, ksPassword), caCert, sigParent, true, false).sigDocBytes;
+
+        return SigComXMLSign.getSignedXML(xmlData, (PrivateKey) key_store.getKey(ksAlias, ksPassword), caCert, sigParent, true, false).sigDocBytes;
     }
 
     /**
