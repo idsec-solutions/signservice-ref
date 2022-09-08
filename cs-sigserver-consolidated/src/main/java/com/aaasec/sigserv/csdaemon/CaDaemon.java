@@ -67,7 +67,12 @@ public class CaDaemon {
                         LOG.log(Level.FINE, "Detailed error trace - signature error", e);
                     }
                     LOG.info("Start Sign service daemon process ...");
-                    daemonTask.doDaemonTask();
+                    try {
+                        daemonTask.doDaemonTask();
+                    } catch (Exception ex) {
+                        LOG.warning("Exception caught while performing daemontask: " + ex.getMessage());
+                        LOG.log(Level.FINE, "Detailed error trace: " + ex.getMessage(), ex);
+                    }
                 }
 
                 try {
