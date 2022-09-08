@@ -60,7 +60,7 @@ public class ApResponseHandler {
     public static final Response unmarshallB64Response(String b64Response) {
         try {
             Unmarshaller unmarshaller = Builder.unmarshallerFactory.getUnmarshaller(Response.DEFAULT_ELEMENT_NAME);
-            Document responseDoc = XmlUtils.getDocument(Base64Coder.decode(b64Response));
+            Document responseDoc = XmlUtils.getDocument(Base64Coder.decodeLines(b64Response));
             return (Response) unmarshaller.unmarshall(responseDoc.getDocumentElement());
 
         } catch (Exception ex) {

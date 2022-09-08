@@ -17,7 +17,6 @@
  */
 package com.aaasec.sigserv.cscommon;
 
-import com.aaasec.lib.crypto.xml.XMLSign;
 import org.apache.xml.security.encryption.XMLCipher;
 import org.apache.xml.security.signature.XMLSignature;
 

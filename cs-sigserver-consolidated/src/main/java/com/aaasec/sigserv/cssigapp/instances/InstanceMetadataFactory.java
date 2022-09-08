@@ -5,8 +5,6 @@
  */
 package com.aaasec.sigserv.cssigapp.instances;
 
-import com.aaasec.lib.crypto.xml.SignedXmlDoc;
-import com.aaasec.lib.crypto.xml.XMLSign;
 import com.aaasec.lib.crypto.xml.XmlBeansUtil;
 import com.aaasec.lib.crypto.xml.XmlUtils;
 import com.aaasec.lib.utils.FileOps;
@@ -25,6 +23,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.aaasec.sigserv.cssigapp.utils.NamedKeyStore;
+import com.aaasec.sigserv.xmlsign.SigComXMLSign;
+import com.aaasec.sigserv.xmlsign.SignedXmlDoc;
 import oasisNamesTcSAMLMetadataAttribute.EntityAttributesDocument;
 import oasisNamesTcSAMLMetadataAttribute.EntityAttributesType;
 import oasisNamesTcSAMLMetadataUi.LogoType;
@@ -123,7 +123,7 @@ public class InstanceMetadataFactory {
         }
         Node sigParentNode = esdNodeList.item(0);
         NamedKeyStore mdSignKs = instConf.getInstancesKeyStore();
-        SignedXmlDoc signedXML = XMLSign.getSignedXML(metadataBytes, mdSignKs.getPrivate(), mdSignKs.getKsCert(), sigParentNode, false, false);
+        SignedXmlDoc signedXML = SigComXMLSign.getSignedXML(metadataBytes, mdSignKs.getPrivate(), mdSignKs.getKsCert(), sigParentNode, false, false);
 
         saveMetadata(signedXML.sigDocBytes);
 

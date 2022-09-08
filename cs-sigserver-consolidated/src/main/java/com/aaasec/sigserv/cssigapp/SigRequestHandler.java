@@ -18,7 +18,6 @@
 package com.aaasec.sigserv.cssigapp;
 
 import com.aaasec.lib.crypto.xml.SigVerifyResult;
-import com.aaasec.lib.crypto.xml.SignedXmlDoc;
 import com.aaasec.lib.crypto.xml.XMLSign;
 import com.aaasec.sigserv.cscommon.FileOps;
 import com.aaasec.sigserv.cscommon.FnvHash;
@@ -35,8 +34,9 @@ import com.aaasec.sigserv.cssigapp.db.SignTaskTable;
 import com.aaasec.sigserv.cssigapp.instances.InstanceConfig;
 import com.aaasec.sigserv.cssigapp.utils.NamedKeyStore;
 import com.aaasec.sigserv.sigserver.auth.SignMessUtil;
+import com.aaasec.sigserv.xmlsign.SignedXmlDoc;
+import com.aaasec.sigserv.xmlsign.SigComXMLSign;
 import org.apache.commons.lang.StringUtils;
-import org.apache.xml.security.utils.XMLUtils;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlString;
 import org.w3c.dom.Node;
@@ -56,7 +56,6 @@ import x0CoreSchema.oasisNamesTcDss1.SignResponseDocument.SignResponse;
 
 import java.io.ByteArrayInputStream;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.security.PublicKey;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -359,7 +358,7 @@ public class SigRequestHandler {
             Node sigParent = SignatureCreationHandler.getResponseSignatureParent(responseDoc);
             SignedXmlDoc signedXML = null;
             try {
-                signedXML = XMLSign.getSignedXML(responseXml, instanceKs.getPrivate(), instanceKs.getKsCert(), sigParent, true, false);
+                signedXML = SigComXMLSign.getSignedXML(responseXml, instanceKs.getPrivate(), instanceKs.getKsCert(), sigParent, true, false);
             }
             catch (Exception e) {
                 LOG.log(Level.SEVERE, "Unable to sign response. Sending unsigned response", e);

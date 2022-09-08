@@ -17,8 +17,6 @@
  */
 package com.aaasec.sigserv.cssigapp;
 
-import com.aaasec.lib.crypto.xml.SignedXmlDoc;
-import com.aaasec.lib.crypto.xml.XMLSign;
 import com.aaasec.lib.crypto.xml.xades.XAdESObject;
 import com.aaasec.sigserv.cscommon.Constants;
 
@@ -48,6 +46,8 @@ import com.aaasec.sigserv.cssigapp.sap.SAPHandler;
 import com.aaasec.sigserv.cssigapp.utils.ASN1Util;
 import com.aaasec.sigserv.cssigapp.utils.CertificateUtils;
 import com.aaasec.sigserv.cssigapp.utils.NamedKeyStore;
+import com.aaasec.sigserv.xmlsign.SignedXmlDoc;
+import com.aaasec.sigserv.xmlsign.SigComXMLSign;
 import iaik.x509.X509Certificate;
 
 import java.io.ByteArrayInputStream;
@@ -141,7 +141,7 @@ public class SignatureCreationHandler implements Constants {
             String nonce = reqRes.getRequest().getRequestID();
             Node sigParent = getResponseSignatureParent(responseDoc);
             byte[] unsignedXml = XmlBeansUtil.getStyledBytes(responseDoc);
-            SignedXmlDoc signedXML = XMLSign.getSignedXML(unsignedXml, instKs.getPrivate(), instKs.getKsCert(), sigParent, true, false);
+            SignedXmlDoc signedXML = SigComXMLSign.getSignedXML(unsignedXml, instKs.getPrivate(), instKs.getKsCert(), sigParent, true, false);
             byte[] signedResponse = signedXML.sigDocBytes;
             String xhtml = XhtmlForm.getSignXhtmlForm(XhtmlForm.Type.SIG_RESPONSE_FORM, responseUrl, signedResponse, nonce);
 
