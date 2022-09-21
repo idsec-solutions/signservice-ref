@@ -26,7 +26,7 @@
     <properties>
         <tomcat.version>9.0.65</tomcat.version>
         <docker.image.prefix>docker.eidastest.se:5000</docker.image.prefix>
-        <signservice.version>1.4.2</signservice.version>
+        <signservice.version>1.4.3</signservice.version>
     </properties>
 
     <repositories>

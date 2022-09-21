@@ -461,20 +461,31 @@ public class CertificationAuthority implements CaKeyStoreConstants {
      * @return the number of certificates being revoked by this action.
      */
     public int revokeCertificates() {
+
         long currentTime = System.currentTimeMillis();
         long nextUpdateTime = currentTime + crlValPeriod;
-        List<DbCert> certList = certDb.getCertsByRevocation(true);
-
-        DbCAParam cp = paramDb.getDbRecord(CRL_SERIAL_KEY);
-        if (cp == null) {
-            return 0;
-        }
-        long nextCrlSerial = cp.getIntValue();
+        long nextCrlSerial;
+        List<DbCert> certList;
+        DbCAParam cp;
 
         try {
+            certList = certDb.getCertsByRevocation(true);
+            LOG.fine("Revoked cert list count: " + certList.size());
+            cp = paramDb.getDbRecord(CRL_SERIAL_KEY);
+            if (cp == null) {
+                return 0;
+            }
+            nextCrlSerial = cp.getIntValue();
+            LOG.fine("Next CRL serial number: " + nextCrlSerial);
+        } catch (Exception ex) {
+            LOG.warning("Revocation preparation failure: " + ex);
+            LOG.log(Level.FINE, "Detailed trace", ex);
+            return 0;
+        }
 
+        try {
             int previoslyRevoked = (latestCrl == null) ? 0 : latestCrl.getRevokedCertificates().size();
-
+            LOG.fine("Previously revoked cert count: " + previoslyRevoked);
             X509CRL crl = new X509CRL();
 
             crl.setIssuerDN((Name) caCert.getSubjectDN());
@@ -502,6 +513,7 @@ public class CertificationAuthority implements CaKeyStoreConstants {
             for (DbCert dbCert : certList) {
                 GregorianCalendar revTime = new GregorianCalendar();
                 RevokedCertificate rc = new RevokedCertificate(dbCert.getCertificate(), new Date(dbCert.getRevDate()));
+                LOG.fine("Revoking certificate: " + rc.getSerialNumber().toString(16));
 
                 // ReasonCode
                 rc.addExtension(new ReasonCode(ReasonCode.privilegeWithdrawn));
@@ -523,12 +535,14 @@ public class CertificationAuthority implements CaKeyStoreConstants {
             paramDb.addOrReplaceRecord(cp);
             //System.out.println(newCrl.toString(true));
             // Store CRL
+            LOG.fine("Storing new CRL: " + crlFile.getAbsolutePath());
             FileOps.saveByteFile(FileOps.readBinaryFile(crlFile), exportCrlFile);
 //            FTPops.uploadCRL(caName, caDir);
             return certList.size() - previoslyRevoked;
 
         } catch (Exception ex) {
-            LOG.warning(ex.getMessage());
+            LOG.warning("Revocation failure: " + ex);
+            LOG.log(Level.FINE, "Detailed trace", ex);
             return 0;
         }
     }
