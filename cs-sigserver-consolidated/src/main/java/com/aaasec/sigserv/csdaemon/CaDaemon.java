@@ -5,6 +5,10 @@
 package com.aaasec.sigserv.csdaemon;
 
 import com.aaasec.sigserv.cssigapp.instances.InstanceMetadataFactory;
+
+import java.time.Duration;
+import java.util.Date;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,7 +21,9 @@ public class CaDaemon {
     private static final Logger LOG = Logger.getLogger(CaDaemon.class.getName());
     CaDaemonOperations daemonTask;
     DaemonModel model;
-    private long daemonCycle = 720000;
+    private static final long DEFAULT_DAEMON_CYCLE = 3600000;
+    private static final String DAEMON_CYCLE_SECONDS_ENV = "DAEMON_CYCLE_SECONDS";
+    private final long daemonCycle;
     boolean taskInAction;
     boolean stop;
     InstanceMetadataFactory instMdFact;
@@ -26,6 +32,11 @@ public class CaDaemon {
         this.model = new DaemonModel();
         this.daemonTask = new CaDaemonOperations(model);
         this.instMdFact = new InstanceMetadataFactory(ContextParameters.getInstanceConf());
+        String envDaemonCycleSeconds = System.getenv(DAEMON_CYCLE_SECONDS_ENV);
+        daemonCycle = envDaemonCycleSeconds == null
+          ? DEFAULT_DAEMON_CYCLE
+          : Long.parseLong(envDaemonCycleSeconds) * 1000L;
+        LOG.info("Creating Daemon with refresh cycle: " + Duration.ofMillis(daemonCycle));
     }
 
     void invokeDaemon() {

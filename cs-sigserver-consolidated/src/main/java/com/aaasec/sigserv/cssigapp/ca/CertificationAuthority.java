@@ -77,6 +77,7 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.cert.X509CRLEntry;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -484,8 +485,9 @@ public class CertificationAuthority implements CaKeyStoreConstants {
         }
 
         try {
-            int previoslyRevoked = (latestCrl == null) ? 0 : latestCrl.getRevokedCertificates().size();
-            LOG.fine("Previously revoked cert count: " + previoslyRevoked);
+            LOG.fine("Proceeding to publish new CRL with next update= " + Instant.ofEpochMilli(nextUpdateTime));
+            int previouslyRevoked = (latestCrl == null) ? 0 : latestCrl.getRevokedCertificates().size();
+            LOG.fine("Previously revoked cert count: " + previouslyRevoked);
             X509CRL crl = new X509CRL();
 
             crl.setIssuerDN((Name) caCert.getSubjectDN());
@@ -538,7 +540,7 @@ public class CertificationAuthority implements CaKeyStoreConstants {
             LOG.fine("Storing new CRL: " + crlFile.getAbsolutePath());
             FileOps.saveByteFile(FileOps.readBinaryFile(crlFile), exportCrlFile);
 //            FTPops.uploadCRL(caName, caDir);
-            return certList.size() - previoslyRevoked;
+            return certList.size() - previouslyRevoked;
 
         } catch (Exception ex) {
             LOG.warning("Revocation failure: " + ex);

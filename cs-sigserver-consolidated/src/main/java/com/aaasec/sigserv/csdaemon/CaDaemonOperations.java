@@ -77,6 +77,9 @@ public class CaDaemonOperations {
                 FileOps.createDir(exportCrlFile.getParentFile().getAbsolutePath());
                 FileOps.saveByteFile(FileOps.readBinaryFile(crlFile), exportCrlFile);
                 LOG.fine("Sign service daemon: Exported " + exportCrlFile.getAbsolutePath());
+            } else {
+                LOG.severe("No CRL file available");
+                throw new RuntimeException("No CRL file available - this is an unrecoverable critical error");
             }
         }
     }
