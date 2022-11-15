@@ -28,12 +28,14 @@ import com.aaasec.sigserv.xmlsign.registry.impl.RSAPSSSignatureAlgorithmImpl;
  */
 public class NoParamsRSAPSSSignatureAlgorithm extends RSAPSSSignatureAlgorithmImpl {
 
+  public static final String ALGO_ID_SIGNATURE_RSA_PSS = "http://www.w3.org/2007/05/xmldsig-more#rsa-pss";
+
+
   /**
    * Constructor.
    */
   public NoParamsRSAPSSSignatureAlgorithm() {
-    super("http://www.w3.org/2007/05/xmldsig-more#rsa-pss");
-//    super(XMLSignature.ALGO_ID_SIGNATURE_RSA_PSS);
+    super(ALGO_ID_SIGNATURE_RSA_PSS);
     this.setKeyType("RSA");
     this.setOrder(Integer.MAX_VALUE);
     this.setJcaName("RSASSA-PSS");

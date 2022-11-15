@@ -54,6 +54,7 @@ import java.util.logging.Logger;
  */
 public class DefaultXMLSigner {
   private static final Logger LOG = Logger.getLogger(DefaultXMLSigner.class.getName());
+  public static final String ALGO_ID_SIGNATURE_RSA_PSS = "http://www.w3.org/2007/05/xmldsig-more#rsa-pss";
 
 
   /** The default canonicalization method - required Exclusive Canonicalization (omits comments). */
@@ -245,7 +246,7 @@ public class DefaultXMLSigner {
       LOG.log(Level.WARNING, msg);
       throw new NoSuchAlgorithmException(msg);
     }
-    if (algorithm.getUri().equals(XMLSignature.ALGO_ID_SIGNATURE_RSA_PSS)) {
+    if (algorithm.getUri().equals(ALGO_ID_SIGNATURE_RSA_PSS)) {
       final String msg = String.format("Incomplete algorithm '%s' - missing parameters", signatureAlgorithm);
       LOG.log(Level.WARNING, msg);
       throw new NoSuchAlgorithmException(msg);
