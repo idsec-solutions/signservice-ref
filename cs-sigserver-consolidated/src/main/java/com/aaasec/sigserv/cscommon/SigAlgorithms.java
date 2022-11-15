@@ -23,6 +23,8 @@ import org.apache.xml.security.signature.XMLSignature;
 import java.util.Arrays;
 import java.util.Optional;
 
+import com.aaasec.sigserv.xmlsign.sigcommons.DefaultXMLSigner;
+
 /**
  * Signature Algorithms.
  */

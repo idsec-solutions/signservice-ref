@@ -2,7 +2,7 @@
 Reference implementation of sign service for evaluation of Sweden Connect technical framework
 
 ---
-# CURRENT BUILD VERSION = 1.4.4
+# CURRENT BUILD VERSION = 1.4.5
 ---
 
 This repo contains build and deploy scripts for the Sweden Connect reference electronic signature service. The following build and deployment steps should be followed:

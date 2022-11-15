@@ -17,8 +17,8 @@ package com.aaasec.sigserv.xmlsign.registry.impl;
 
 import org.apache.xml.security.signature.XMLSignature;
 import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+
 import com.aaasec.sigserv.xmlsign.registry.MessageDigestAlgorithm;
-import com.aaasec.sigserv.xmlsign.registry.impl.RSAPSSSignatureAlgorithmImpl;
 
 /**
  * Handles the special case where we represent RSA-PSS without any parameters.
@@ -27,6 +27,7 @@ import com.aaasec.sigserv.xmlsign.registry.impl.RSAPSSSignatureAlgorithmImpl;
  * @author Stefan Santesson (stefan@idsec.se)
  */
 public class NoParamsRSAPSSSignatureAlgorithm extends RSAPSSSignatureAlgorithmImpl {
+
 
   /**
    * Constructor.

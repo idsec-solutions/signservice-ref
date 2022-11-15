@@ -54,6 +54,8 @@ import java.util.logging.Logger;
  */
 public class DefaultXMLSigner {
   private static final Logger LOG = Logger.getLogger(DefaultXMLSigner.class.getName());
+//  public static final String ALGO_ID_SIGNATURE_RSA_PSS = "http://www.w3.org/2007/05/xmldsig-more#rsa-pss";
+//  public static final String ALGO_ID_SIGNATURE_RSA_SHA256_MGF1 = "http://www.w3.org/2007/05/xmldsig-more#sha256-rsa-MGF1";
 
 
   /** The default canonicalization method - required Exclusive Canonicalization (omits comments). */
@@ -360,7 +362,7 @@ public class DefaultXMLSigner {
   }
 
   /**
-   * Assigns the {@link se.swedenconnect.security.algorithms.AlgorithmRegistry} to use. If not assigned, the registry configured for
+   * Assigns the {@link AlgorithmRegistry} to use. If not assigned, the registry configured for
    * {@link AlgorithmRegistrySingleton} will be used.
    *
    * @param algorithmRegistry
