@@ -32,7 +32,8 @@ public class NoParamsRSAPSSSignatureAlgorithm extends RSAPSSSignatureAlgorithmIm
    * Constructor.
    */
   public NoParamsRSAPSSSignatureAlgorithm() {
-    super(XMLSignature.ALGO_ID_SIGNATURE_RSA_PSS);
+    super("http://www.w3.org/2007/05/xmldsig-more#rsa-pss");
+//    super(XMLSignature.ALGO_ID_SIGNATURE_RSA_PSS);
     this.setKeyType("RSA");
     this.setOrder(Integer.MAX_VALUE);
     this.setJcaName("RSASSA-PSS");
