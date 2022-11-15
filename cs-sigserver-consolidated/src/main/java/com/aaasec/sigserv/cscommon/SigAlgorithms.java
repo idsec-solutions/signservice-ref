@@ -23,13 +23,15 @@ import org.apache.xml.security.signature.XMLSignature;
 import java.util.Arrays;
 import java.util.Optional;
 
+import com.aaasec.sigserv.xmlsign.sigcommons.DefaultXMLSigner;
+
 /**
  * Signature Algorithms.
  */
 public enum SigAlgorithms {
 
   RSA(XMLCipher.SHA256, XMLSignature.ALGO_ID_SIGNATURE_RSA_SHA256, "SHA-256", "SHA1withRSA"),
-  RSA_PSS(XMLCipher.SHA256, XMLSignature.ALGO_ID_SIGNATURE_RSA_SHA256_MGF1, "SHA-256", "SHA1withRSA"),
+  RSA_PSS(XMLCipher.SHA256, DefaultXMLSigner.ALGO_ID_SIGNATURE_RSA_SHA256_MGF1, "SHA-256", "SHA1withRSA"),
   ECDSA(XMLCipher.SHA256, XMLSignature.ALGO_ID_SIGNATURE_ECDSA_SHA256, "SHA-256", "SHA1withECDSA"),
   UNSUPPORTED(null, null, null, null);
 

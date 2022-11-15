@@ -19,6 +19,7 @@ import org.apache.xml.security.signature.XMLSignature;
 import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
 import com.aaasec.sigserv.xmlsign.registry.MessageDigestAlgorithm;
 import com.aaasec.sigserv.xmlsign.registry.impl.RSAPSSSignatureAlgorithmImpl;
+import com.aaasec.sigserv.xmlsign.sigcommons.DefaultXMLSigner;
 
 /**
  * Handles the special case where we represent RSA-PSS without any parameters.
@@ -28,14 +29,12 @@ import com.aaasec.sigserv.xmlsign.registry.impl.RSAPSSSignatureAlgorithmImpl;
  */
 public class NoParamsRSAPSSSignatureAlgorithm extends RSAPSSSignatureAlgorithmImpl {
 
-  public static final String ALGO_ID_SIGNATURE_RSA_PSS = "http://www.w3.org/2007/05/xmldsig-more#rsa-pss";
-
 
   /**
    * Constructor.
    */
   public NoParamsRSAPSSSignatureAlgorithm() {
-    super(ALGO_ID_SIGNATURE_RSA_PSS);
+    super(DefaultXMLSigner.ALGO_ID_SIGNATURE_RSA_PSS);
     this.setKeyType("RSA");
     this.setOrder(Integer.MAX_VALUE);
     this.setJcaName("RSASSA-PSS");
