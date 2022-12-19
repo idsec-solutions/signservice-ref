@@ -46,7 +46,7 @@ import x0Metadata.oasisNamesTcSAML2.SPSSODescriptorType;
 /**
  * Class for parsing SAML Metadata.
  */
-public final class UrlMetaDataSource extends MetaData {
+public final class UrlMetaDataSource extends CompleteMetaData {
 
     private Thread recacheThread;
     private long cacheInterval;

@@ -208,13 +208,12 @@ public class AuthRequest implements Constants {
             LOG.warning("using SWAMID profile. Ignore LoA requesting");
             return null;
         }
-        Map<String, List<String>> idpSupportedClassRefMap = ContextParameters.getMetadata().getIdpSupportedClassRefMap();
-        if (!idpSupportedClassRefMap.containsKey(idPEntityId)){
+        List<String> idpSupportedClassRefList = ContextParameters.getMetadata().getIdpSupportedClassRefs(idPEntityId);
+        if (idpSupportedClassRefList == null){
             error = true;
             errorMessage = "Requested IdP do not support any Auth context";
             return null;
         }
-        List<String> idpSupportedClassRefList = idpSupportedClassRefMap.get(idPEntityId);
         boolean mustShow = false;
         List<String> requestContextClassRefList;
         try {
@@ -258,19 +257,18 @@ public class AuthRequest implements Constants {
 
     private void setReqUrlAndType(AuthReqData reqData, SignRequestDocument sigReqDoc) {
         MetaData metadata = ContextParameters.getMetadata();
-        Map<String, Map<String, String>> ssoMap = metadata.getSSOMap();
         String idpEntityId = reqData.getIdpEntityId();
+        Map<String, String> idpSsoMap = metadata.getSSOMap(idpEntityId);
+        if (idpSsoMap == null) {
+            error = true;
+            errorMessage = "No valid IdP specified in request";
+            return;
+        }
         if (idpEntityId == null) {
             error = true;
             errorMessage = "No valid IdP specified in request";
             return;
         }
-        if (!ssoMap.containsKey(idpEntityId)) {
-            error = true;
-            errorMessage = "No valid IdP specified in request";
-            return;
-        }
-        Map<String, String> idpSsoMap = ssoMap.get(idpEntityId);
         if (ContextParameters.getConf().getServiceType().equalsIgnoreCase("swamid-default")){
             if (idpSsoMap.containsKey(SSOBinding.redirect.getBindginURI())) {
                 reqData.setReqUrl(idpSsoMap.get(SSOBinding.redirect.getBindginURI()));
