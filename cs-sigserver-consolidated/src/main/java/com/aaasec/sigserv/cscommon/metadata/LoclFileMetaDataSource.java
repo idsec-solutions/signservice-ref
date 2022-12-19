@@ -38,13 +38,13 @@ import org.apache.xmlbeans.XmlException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import x0Metadata.oasisNamesTcSAML2.EntitiesDescriptorDocument;
+
 import x0Metadata.oasisNamesTcSAML2.ExtensionsType;
 
 /**
  * Class for parsing SAML Metadata.
  */
-public final class LoclFileMetaDataSource extends MetaData {
+public final class LoclFileMetaDataSource extends CompleteMetaData {
 
     private Document doc;
     private File xmlFile;

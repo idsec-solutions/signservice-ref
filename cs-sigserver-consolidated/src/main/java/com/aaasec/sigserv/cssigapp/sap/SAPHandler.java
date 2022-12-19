@@ -90,11 +90,10 @@ public class SAPHandler implements Constants {
 
     public boolean isIdPSAPEnabled(String idPEntityId) {
         MetaData metaData = ContextParameters.getMetadata();
-        Map<String, EntityDescriptorType> entityDescriptorMap = metaData.getEntityDescriptorMap();
-        if (!entityDescriptorMap.containsKey(idPEntityId)) {
+        EntityDescriptorType idpEd = metaData.getEntityDescriptor(idPEntityId);
+        if (idpEd == null) {
             return false;
         }
-        EntityDescriptorType idpEd = entityDescriptorMap.get(idPEntityId);
         Map<String, List<EntityAttributeVal>> entityAttributes = MetaDataDoc.getEntityAttributes(idpEd);
 
         if (entityAttributes.containsKey(ENTITY_CATEGORY)) {
@@ -173,7 +172,7 @@ public class SAPHandler implements Constants {
 
             SignedJWT signedJWT = SignedJWT.parse(sadOptional.get());
 
-            List<PublicKey> idpPubkeyList = ContextParameters.getMetadata().getCertMap().get(idPEntityId).stream()
+            List<PublicKey> idpPubkeyList = ContextParameters.getMetadata().getCertificates(idPEntityId).stream()
                     .map(s -> CertificateUtils.getCertificateFromPEM(s).getPublicKey())
                     .collect(Collectors.toList());
 

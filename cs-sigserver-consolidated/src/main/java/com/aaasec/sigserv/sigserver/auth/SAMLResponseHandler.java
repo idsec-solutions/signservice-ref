@@ -77,12 +77,11 @@ public class SAMLResponseHandler {
             idpEntityId = samlResponse.getIssuer().getDOM().getTextContent();
             LOG.fine("IdP entityId: " + idpEntityId);
             MetaData metadata = ContextParameters.getMetadata();
-            Map<String, List<String>> certMap = metadata.getCertMap();
+            List<String> pemCerts = metadata.getCertificates(idpEntityId);
             status = getAuthnStatus(samlResponse);
-            LOG.fine("Found metadata for IdP: " + certMap.containsKey(idpEntityId));
+            LOG.fine("Found metadata for IdP: " + pemCerts);
 
-            if (certMap.containsKey(idpEntityId)) {
-                List<String> pemCerts = certMap.get(idpEntityId);
+            if (pemCerts != null) {
                 LOG.fine("Found " + pemCerts.size() + " certificates in IdP metadata");
                 for (String pemCert : pemCerts) {
                     X509Certificate idpCert = CertificateUtils.getCertificateFromPEM(pemCert);

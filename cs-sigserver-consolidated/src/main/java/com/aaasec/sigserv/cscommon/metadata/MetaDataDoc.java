@@ -96,6 +96,8 @@ public final class MetaDataDoc implements MetadataConstants {
             initialized = true;
             verifySignature();
         } catch (Exception ex) {
+
+
             Logger.getLogger(MetaDataDoc.class.getName()).warning(ex.getMessage());
         }
     }

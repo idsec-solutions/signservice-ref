@@ -5,6 +5,8 @@
 package com.aaasec.sigserv.cscommon.metadata;
 
 import com.aaasec.sigserv.cscommon.FileOps;
+import com.aaasec.sigserv.cscommon.metadata.mdq.MdqMetadata;
+
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.security.cert.CertificateFactory;
@@ -32,6 +34,10 @@ public class MetadataFactory {
         return getMetadata(false, false);
     }
 
+    public void init() {
+        getMetadata();
+    }
+
     public MetaData getMetadata(boolean forceUpdate, boolean daemon) {
         LOG.fine("Getting current metadata - forceUpdate=" + forceUpdate + " - daemon=" + daemon);
         if (location==null){
@@ -39,12 +45,18 @@ public class MetadataFactory {
             return null;
         }
 
+        if (source == SourceType.MDQ) {
+            // MDQ metadata has its own refresh mechanism and timer.
+            LOG.fine("Returning MDQ metadata source");
+            return currentMetadata;
+        }
+
         // If requester is a daemon, then recache time applies. If you are not a daemon, wait until 2 recache times has passed to require update
         int multiplier = daemon ? 1 : 2;
         if (currentMetadata != null
           && System.currentTimeMillis() < getNextUpdate(recachetimeMinutes * multiplier)
           && forceUpdate == false) {
-            LOG.fine("Returning cached metadata holding " + currentMetadata.getCertMap().size() + " entities with certificates");
+            LOG.fine("Returning cached metadata");
             return currentMetadata;
         }
 
@@ -62,7 +74,6 @@ public class MetadataFactory {
             return currentMetadata;
         }
 
-        source = SourceType.URL;
         X509Certificate cert;
         try {
             LOG.fine("Obtaining metadata certificate from " + certLocation);
@@ -73,6 +84,14 @@ public class MetadataFactory {
             return null;
         }
 
+        if (location.endsWith("/entities/")) {
+            LOG.fine("Metadata location is an MDQ location. Creating an MDQ metadata source");
+            source = SourceType.MDQ;
+            currentMetadata = new MdqMetadata(location, cert);
+            return currentMetadata;
+        }
+
+        source = SourceType.URL;
         LOG.fine("Reloading metadata from URL source " + location);
         MetaData newMetadata = new UrlMetaDataSource(location, cert, recachetimeMinutes);
         if (newMetadata.isInitialized()) {
@@ -116,6 +135,6 @@ public class MetadataFactory {
 
     public enum SourceType {
 
-        URL, File
+        URL, File, MDQ
     }
 }
