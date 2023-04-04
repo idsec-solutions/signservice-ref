@@ -2,7 +2,7 @@ FROM openjdk:8-jre
 
 #RUN mkdir /opt/docker
 #RUN mkdir /opt/docker/internal
-ADD target/dependency/apache-tomcat-9.0.65 /opt/tomcat/
+ADD target/dependency/apache-tomcat-9.0.73 /opt/tomcat/
 RUN rm -rf /opt/tomcat/webapps/docs
 RUN rm -rf /opt/tomcat/webapps/examples
 RUN rm -rf /opt/tomcat/webapps/manager
